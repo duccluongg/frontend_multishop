@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Switch, Route } from 'react-router-dom';
+import Register from '../src/features/Register/Register';
+import LoginForm from '../src/features/Auth/components/userAuth/LoginForm';
+import Main from './features/Main/main';
+import ProductDetail from './features/ProductDetail/ProductDetail';
+import Productlist from './features/ProductList/ProductList';
+import ScrollToTop from './constants/ScrollToTop';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <ScrollToTop>
+        <Route path="/login" exact component={LoginForm} />
+        <Route path="/register" exact component={Register} />
+        <Route exact path="/productDetail/:id" component={ProductDetail} />
+        <Route path="/productList/:id" component={Productlist} />
+        <Route path="/" exact component={Main} />
+      </ScrollToTop>
+    </Switch>
   );
 }
 

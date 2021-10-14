@@ -1,0 +1,35 @@
+.sideBar {
+  display: flex;
+  width: 1200px;
+  margin: 0px 90px 0px 90px;
+  justify-content: space-between;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  padding: 10px 10px 10px 10px;
+}
+.sideBarItem::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.3s;
+  margin-top: 3px;
+}
+.sideBarItem {
+  text-decoration: none;
+  color: #333;
+}
+.sideBarItem:hover {
+  transition: 0.5s;
+  color: rgb(145, 104, 65);
+  cursor: pointer;
+  text-decoration: none;
+}
+.sideBarItem:hover::after {
+  width: 100%;
+  transition: width 0.3s;
+}

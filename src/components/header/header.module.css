@@ -1,0 +1,80 @@
+.container {
+  width: 1200px;
+  display: flex;
+  margin: 0px 90px 0px 90px;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  align-items: center;
+  height: 91px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  /* margin-right: 125px; */
+}
+.info i {
+  cursor: pointer;
+  line-height: 18px;
+}
+.acc {
+  margin-right: 36px;
+  cursor: pointer;
+  line-height: 52px;
+}
+.cart {
+  margin-right: 30px;
+  cursor: pointer;
+  line-height: 52px;
+}
+.cart i {
+  margin-bottom: 1px;
+  font-size: 11px;
+  margin-left: 7px;
+}
+.border {
+  width: 95%;
+  margin: auto;
+  border-bottom-width: 1px;
+  border-bottom-color: #ededed;
+  border-bottom-style: solid;
+}
+.searchBox {
+  background-color: #2f3640;
+  background: #2f3640;
+  height: 50px;
+  border-radius: 40px;
+  padding: 10px;
+  cursor: pointer;
+}
+.searchBtn {
+  color: #fff;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchTxt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 30px;
+  width: 0px;
+}
+.searchBox:hover > .searchTxt {
+  width: 240px;
+  padding: 0 6px;
+}
