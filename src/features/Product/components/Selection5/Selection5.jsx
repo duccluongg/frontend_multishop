@@ -12,20 +12,20 @@ const Selection5 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    const getApi = `http://localhost:5000/product/getByCategoryId/615a7aae9fc5e7b83635833e`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=4`;
     axios.get(getApi).then((response) => {
-      setProduct(response.data.data);
+      setProduct(response.data.results);
     });
   }, []);
   useEffect(() => {
-    const getApi = `http://localhost:5000/category/615a7aae9fc5e7b83635833e`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/4`;
     axios.get(getApi).then((response) => {
-      setCategory(response.data.data);
+      setCategory(response.data);
       // console.log(response.data.data);
     });
   }, []);
   const click = () => {
-    history.push(`/productList/615a7aae9fc5e7b83635833e`);
+    history.push(`/productList/4`);
   };
   return (
     <div className={styles.selection}>
@@ -45,15 +45,13 @@ const Selection5 = () => {
                   <div
                     className={styles.home__productitemsimg}
                     style={{
-                      backgroundImage: `url(${item.productThumbnail})`,
+                      backgroundImage: `url(${item.thumbnail})`,
                     }}
                   ></div>
-                  <h4 className={styles.home__productitemsname}>
-                    {item.productName}
-                  </h4>
+                  <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {formatCash(item.salePrice)} đ
+                      {formatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
                       <i className="fas fa-search"></i>

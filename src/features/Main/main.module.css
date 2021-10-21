@@ -3,3 +3,11 @@
   margin-left: 90px;
   margin-right: 90px;
 }
+.sweetLoading {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
+}

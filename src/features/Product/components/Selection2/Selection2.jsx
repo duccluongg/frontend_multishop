@@ -4,16 +4,13 @@ import { useHistory } from 'react-router';
 const Selection2 = () => {
   const history = useHistory();
   const clickScreen = () => {
-    history.push('/productList/615a7aae9fc5e7b83635833e');
-    console.log('xon chao');
+    history.push('/productList/3');
   };
   const clickKeyBoard = () => {
-    history.push('/productList/615a7ad69fc5e7b836358344');
-    console.log('xon chao');
+    history.push('/productList/2');
   };
   const clickChair = () => {
-    history.push('/productList/615a7a579fc5e7b836358335');
-    console.log('xon chao');
+    history.push('/productList/8');
   };
   return (
     <div className={styles.Selection2}>
@@ -40,7 +37,7 @@ const Selection2 = () => {
             alt="ảnh pc"
           />
           <div className={styles.content}>
-            <h3>TAI NGHE</h3>
+            <h3>CHUỘT</h3>
             <div className={styles.btn}>
               <button onClick={clickScreen} className={styles.button}>
                 XEM THÊM

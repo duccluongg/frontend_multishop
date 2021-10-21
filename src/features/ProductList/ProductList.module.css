@@ -17,6 +17,9 @@
   margin-left: -5px;
   margin-right: -5px;
 }
+.home__productitems:hover {
+  color: #333;
+}
 
 .col2 {
   padding-left: 5px;
@@ -277,4 +280,12 @@
   color: #fff;
   border: 1px solid #fff;
   cursor: pointer;
+}
+.sweetLoading {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
 }

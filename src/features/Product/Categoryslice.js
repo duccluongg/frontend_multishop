@@ -4,7 +4,8 @@ export const getCategoryApi = createAsyncThunk(
   'Category/Category',
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await categoryApi.getCategory(payload);
+      const response = await categoryApi.getCategories(payload);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -30,7 +31,7 @@ const categorySlice = createSlice({
       state.status = 'getCategoryApi.pending';
     },
     [getCategoryApi.fulfilled]: (state, { payload }) => {
-      state.listCategory = payload.data;
+      state.listCategory = payload;
       state.status = 'getCategoryApi.fullfilled';
     },
     [getCategoryApi.rejected]: (state, { payload }) => {

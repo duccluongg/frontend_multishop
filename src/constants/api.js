@@ -1,5 +1,5 @@
-const LoginUrl = '/user/login';
-const ProductCategory = '/product/getByCategoryId';
-const Category = '/category/';
+const LoginUrl = '/login';
+const ProductCategory = '/products?category';
+const Categories = '/categories/';
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { LoginUrl, ProductCategory, Category };
+export default { LoginUrl, ProductCategory, Categories };

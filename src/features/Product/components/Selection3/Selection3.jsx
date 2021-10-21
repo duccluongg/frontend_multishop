@@ -16,20 +16,20 @@ const Selection3 = () => {
   const [category, setCategory] = useState([]);
   const history = useHistory();
   useEffect(() => {
-    const getApi = `http://localhost:5000/product/getByCategoryId/615a7a8b9fc5e7b836358338`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=7`;
     axios.get(getApi).then((response) => {
-      setProduct(response.data.data);
+      setProduct(response.data.results);
     });
   }, []);
   useEffect(() => {
-    const getApi = `http://localhost:5000/category/615a7a8b9fc5e7b836358338`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/7`;
     axios.get(getApi).then((response) => {
-      setCategory(response.data.data);
+      setCategory(response.data);
       // console.log(response.data.data);
     });
   }, []);
   const click = () => {
-    history.push(`/productList/615a7a8b9fc5e7b836358338`);
+    history.push(`/productList/7`);
   };
   return (
     <div className={styles.selection}>
@@ -39,7 +39,7 @@ const Selection3 = () => {
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {product.slice(24, 28).map((item) => (
+            {product.slice(0, 4).map((item) => (
               <Link
                 to={`/productDetail/${item.id}`}
                 key={item.id}
@@ -49,15 +49,13 @@ const Selection3 = () => {
                   <div
                     className={styles.home__productitemsimg}
                     style={{
-                      backgroundImage: `url(${item.productThumbnail})`,
+                      backgroundImage: `url(${item.thumbnail})`,
                     }}
                   ></div>
-                  <h4 className={styles.home__productitemsname}>
-                    {item.productName}
-                  </h4>
+                  <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {formatCash(item.salePrice)} đ
+                      {formatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
                       <i className="fas fa-search"></i>

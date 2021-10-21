@@ -13,13 +13,13 @@ const Selection1 = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const click = () => {
-    history.push(`/productList/615a7a389fc5e7b836358332`);
+    history.push(`/productList/1`);
   };
   useEffect(() => {
-    dispatch(getProductCategory('615a7a389fc5e7b836358332'));
+    dispatch(getProductCategory('1'));
   }, []);
   useEffect(() => {
-    dispatch(getCategoryApi('615a7a389fc5e7b836358332'));
+    dispatch(getCategoryApi('1'));
   }, []);
   return (
     <div className={styles.selection}>
@@ -29,7 +29,7 @@ const Selection1 = () => {
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {list.slice(44, 48).map((item) => (
+            {list.slice(0, 4).map((item) => (
               <Link
                 to={`/productDetail/${item.id}`}
                 key={item.id}
@@ -39,15 +39,13 @@ const Selection1 = () => {
                   <div
                     className={styles.home__productitemsimg}
                     style={{
-                      backgroundImage: `url(${item.productThumbnail})`,
+                      backgroundImage: `url(${item.thumbnail})`,
                     }}
                   ></div>
-                  <h4 className={styles.home__productitemsname}>
-                    {item.productName}
-                  </h4>
+                  <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {formatCash(item.salePrice)} đ
+                      {formatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
                       <i className="fas fa-search"></i>

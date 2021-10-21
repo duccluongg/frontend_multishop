@@ -4,11 +4,21 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import AddToCartForm from '../AddToCartForm/AddToCartForm';
 import { useDispatch } from 'react-redux';
+import formatCash from '../../../../constants/formatPrice';
 // import { addToCart } from 'features/Cart/cartSlice';
 import { Snackbar } from '@material-ui/core';
 function ProductInfor(props) {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState({});
   const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      const getApi = `http://yshuynh.pythonanywhere.com/api/products/${id}`;
+      axios.get(getApi).then((response) => {
+        setProduct(response.data);
+      });
+    }
+  }, [id]);
   // const dispatch = useDispatch();
   // const [open, setOpen] = useState(false);
 
@@ -18,16 +28,6 @@ function ProductInfor(props) {
   //   }
   //   setOpen(false);
   // };
-
-  useEffect(() => {
-    if (id) {
-      const getApi = `http://localhost:5000/product/${id}`;
-      axios.get(getApi).then((response) => {
-        setProduct(response.data.data);
-        console.log(response.data);
-      });
-    }
-  }, [id]);
 
   // const handleAddToCartForm = ({ quantity }) => {
   //   const action = addToCart({
@@ -52,30 +52,14 @@ function ProductInfor(props) {
           Thêm vào giỏ hàng thành công
         </Alert>
       </Snackbar> */}
-      <h4 className={styles.ProductName}>{product?.productName}</h4>
-      <h5 className={styles.ProductBand}>{product?.brand}</h5>
-      <p className={styles.ProductDescription}>{product?.productDescription}</p>
-      <div className={styles.ProductTable}>
-        <div className={styles.ProductTableRow}>
-          <span className={styles.ProductItem}>BRAND</span>
-          <span className={styles.ProductItem}>{product?.brand}</span>
-        </div>
-        <div className={styles.ProductTableRow}>
-          <span className={styles.ProductItem}>Loại</span>
-          <span className={styles.ProductItem}>LAPTOP</span>
-        </div>
-        <div className={styles.ProductTableRow}>
-          <span className={styles.ProductItem}>Nước</span>
-          <span className={styles.ProductItem}>USA</span>
-        </div>
-        <div className={styles.ProductTableRow}>
-          <span className={styles.ProductItem}>Số lượng mua</span>
-          <span className={styles.ProductItem}>23.000</span>
-        </div>
-      </div>
+      <h4 className={styles.ProductName}>{product?.name}</h4>
+      <h5 className={styles.ProductBand}>{product?.brand?.name}</h5>
+      <p className={styles.ProductDescription}>{product?.description}</p>
+
       <div className={styles.ProductCartWapper}>
         <div className={styles.ProductPriceWapper}>
-          {/* {formatPrice(product?.salePrice)} */}
+          {formatCash(`${product?.sale_price}`)} đ
+          {console.log(typeof `${product?.sale_price}`)}
         </div>
         {/* <AddToCartForm onSubmit={handleAddToCartForm} /> */}
       </div>

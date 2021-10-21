@@ -46,6 +46,9 @@
   will-change: transform;
   cursor: pointer;
 }
+.grid__column24:hover {
+  color: #333;
+}
 .home__productitems::before {
   content: '';
   position: absolute;
@@ -141,7 +144,7 @@
   overflow: hidden;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-color);
+  color: #333;
   display: block;
   display: -webkit-box;
   -webkit-box-orient: vertical;

@@ -141,7 +141,7 @@
   overflow: hidden;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-color);
+  color: #333;
   display: block;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -158,6 +158,9 @@
   font-weight: 500;
   line-height: 36px;
   font-family: 'Roboto Slab', serif;
+}
+.grid__column24:hover {
+  color: #333;
 }
 
 .home__productprice {

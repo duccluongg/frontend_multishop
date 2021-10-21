@@ -76,10 +76,10 @@ const LoginForm = () => {
               alt=""
             />
             <h3>Hi, Welcome Back</h3>
-            <img
+            {/* <img
               src="https://eshop.harleys.co.ke/login/svg/login-image.svg"
               alt=""
-            />
+            /> */}
           </Grid>
         </Grow>
         <Grow in timeout={1500}>
@@ -105,17 +105,17 @@ const LoginForm = () => {
                   fullWidth
                   autoComplete="username"
                   onChange={handleChangeEmail}
-                  type="Email"
+                  type="text"
                   label="Email address"
                   variant="outlined"
                   name="email"
                   autoComplete="off"
-                  value={email}
-                  validators={['required', 'isEmail']}
-                  errorMessages={[
-                    'Email is required',
-                    'Email must be a valid email address',
-                  ]}
+                  // value={email}
+                  // validators={['required', 'isEmail']}
+                  // errorMessages={[
+                  //   'Email is required',
+                  //   'Email must be a valid email address',
+                  // ]}
                   className={styles.textField}
                 />
                 <TextValidator
@@ -128,7 +128,7 @@ const LoginForm = () => {
                   variant="outlined"
                   value={password}
                   className={styles.textField1}
-                  validators={['required', 'minStringLength:5']}
+                  validators={['required', 'minStringLength:3']}
                   errorMessages={[
                     'PassWord is required',
                     'Must enter 8 characters',

@@ -1,26 +1,41 @@
 import React from 'react';
-import { useParams } from 'react-router';
-const Pagination = ({ productPerPage, totalProduct, paginate }) => {
-  const { id } = useParams();
-  const pageNumber = [];
-  for (let i = 1; i < Math.ceil(totalProduct / productPerPage); i++) {
-    pageNumber.push(i);
+import PropTypes from 'prop-types';
+import styles from './Pagination.module.css';
+const Pagination = ({ pagination, onPageChange }) => {
+  const { page, page_size, total } = pagination;
+  console.log(total);
+  const totalPages = Math.ceil(total / page_size);
+  function handlePageChange(newPage) {
+    if (onPageChange) {
+      onPageChange(newPage);
+    }
   }
   return (
     <div>
-      <nav>
-        <ul className="pagination">
-          {pageNumber.map((number) => (
-            <li key={number}>
-              <a onClick={() => paginate(number)} href="">
-                {number}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <button
+        className={styles.button}
+        disabled={page <= 1}
+        onClick={() => handlePageChange(page - 1)}
+      >
+        <i class="fas fa-angle-left"></i>
+      </button>
+      <span>{page}</span>
+      <button
+        className={styles.button}
+        disabled={page >= totalPages}
+        onClick={() => handlePageChange(page + 1)}
+      >
+        <i class="fas fa-angle-right"></i>
+      </button>
     </div>
   );
+};
+Pagination.propTypes = {
+  pagination: PropTypes.object.isRequired,
+  onPageChange: PropTypes.func,
+};
+Pagination.defaultProps = {
+  onPageChange: null,
 };
 
 export default Pagination;

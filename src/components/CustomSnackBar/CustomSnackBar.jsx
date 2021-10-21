@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Slide, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ function CustomSnackBar() {
   const { type, message, isSnackbarOpen } = useSelector(snackbarSelector);
   const dispatch = useDispatch();
   const handleClose = (event, reason) => {
-    if (reason == 'clickaway') {
+    if (reason === 'clickaway') {
       return;
     }
     dispatch(hideSnackbar());
@@ -39,7 +39,6 @@ function CustomSnackBar() {
         open={isSnackbarOpen}
         autoHideDuration={3000}
         onClose={handleClose}
-        tra
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         TransitionComponent={SlideTransition}
       >

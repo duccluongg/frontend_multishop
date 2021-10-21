@@ -4,7 +4,9 @@ import queryString from 'query-string';
 import styles from './ProductRelated.module.css';
 import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
+import { useParams } from 'react-router';
 function ProductRelated(props) {
+  const { id } = useParams();
   const [products, setProducts] = useState([]);
   const filters = {
     _limit: 5,
@@ -12,9 +14,9 @@ function ProductRelated(props) {
   };
   useEffect(() => {
     const paramsString = queryString.stringify(filters);
-    const getApi = `http://localhost:5000/product`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products`;
     axios.get(getApi).then((response) => {
-      setProducts(response.data.data);
+      setProducts(response.data.results);
     });
   });
   return (
@@ -23,25 +25,24 @@ function ProductRelated(props) {
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {products.slice(0, 5).map((item) => (
+            {products.map((item) => (
               <div className={styles.grid__column24}>
                 <Link
                   to={`/productDetail/${item.id}`}
+                  key={item.id}
                   className={styles.home__productitems}
                 >
                   <div
                     className={styles.home__productitemsimg}
-                    style={{ backgroundImage: `url(${item.productThumbnail})` }}
+                    style={{ backgroundImage: `url(${item.thumbnail})` }}
                   ></div>
-                  <h4 className={styles.home__productitemsname}>
-                    {item.productName}
-                  </h4>
+                  <h4 className={styles.home__productitemsname}>{item.name}</h4>
                   <div className={styles.home__productprice}>
                     <span className={styles.home__productitemsprice}>
-                      {formatCash(item.salePrice)} đ
+                      {formatCash(item.sale_price.toString())} đ
                     </span>
                     <div className={styles.btn_cart}>
-                      <i class="fas fa-search"></i>
+                      <i className="fas fa-search"></i>
                       Details
                     </div>
                   </div>
