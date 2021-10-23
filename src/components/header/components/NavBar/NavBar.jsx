@@ -23,7 +23,7 @@ const NavBar = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
   return (
     <React.Fragment>

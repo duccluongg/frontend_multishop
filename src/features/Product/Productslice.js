@@ -5,6 +5,7 @@ export const getProductCategory = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await productApi.getProductCategory(payload);
+      console.log(response.data.results);
       return response.data.results;
     } catch (error) {
       console.log(error);
@@ -34,7 +35,7 @@ const productSlice = createSlice({
       state.status = 'getProductCategory.fulfilled';
     },
     [getProductCategory.rejected]: (state, { payload }) => {
-      state.errorMessage = payload.errorMessage;
+      state.errorMessage = 'bị lỗi';
       state.status = 'getProductCategory.rejected';
     },
   },

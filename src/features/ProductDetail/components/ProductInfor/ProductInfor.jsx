@@ -8,17 +8,7 @@ import formatCash from '../../../../constants/formatPrice';
 // import { addToCart } from 'features/Cart/cartSlice';
 import { Snackbar } from '@material-ui/core';
 function ProductInfor(props) {
-  const [product, setProduct] = useState({});
-  const { id } = useParams();
-
-  useEffect(() => {
-    if (id) {
-      const getApi = `http://yshuynh.pythonanywhere.com/api/products/${id}`;
-      axios.get(getApi).then((response) => {
-        setProduct(response.data);
-      });
-    }
-  }, [id]);
+  const { product } = props;
   // const dispatch = useDispatch();
   // const [open, setOpen] = useState(false);
 

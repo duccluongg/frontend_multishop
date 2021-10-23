@@ -35,7 +35,7 @@ const categorySlice = createSlice({
       state.status = 'getCategoryApi.fullfilled';
     },
     [getCategoryApi.rejected]: (state, { payload }) => {
-      state.errorMessage = payload.errorMessage;
+      state.errorMessage = 'bị lỗi';
       state.status = 'getCategoryApi.rejected';
     },
   },

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
 import { useParams } from 'react-router';
 function ProductRelated(props) {
-  const { id } = useParams();
   const [products, setProducts] = useState([]);
   const filters = {
     _limit: 5,
@@ -18,7 +17,7 @@ function ProductRelated(props) {
     axios.get(getApi).then((response) => {
       setProducts(response.data.results);
     });
-  });
+  }, []);
   return (
     <div className={styles}>
       <div className={styles.header}>Sản phẩm liên quan</div>

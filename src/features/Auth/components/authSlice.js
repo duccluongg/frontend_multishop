@@ -9,8 +9,9 @@ export const userLogin = createAsyncThunk(
       const response = await userApi.login(payload);
       console.log(response);
       if (payload.remember)
-        localStorage.setItem(storageUser.TOKEN, response.data.message);
-      else sessionStorage.setItem(storageUser.TOKEN, response.data.message);
+        localStorage.setItem(storageUser.TOKEN, response.data.access_token);
+      else
+        sessionStorage.setItem(storageUser.TOKEN, response.data.access_token);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -47,7 +48,7 @@ const authSlice = createSlice({
     [userLogin.rejected]: (state, { payload }) => {
       state.isRequesting = false;
       state.isError = true;
-      state.errorMessage = payload.message;
+      state.errorMessage = 'Sai tên đăng nhập hoặc mật khẩu';
     },
   },
 });

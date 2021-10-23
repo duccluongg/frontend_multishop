@@ -8,6 +8,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { useHistory } from 'react-router';
 import Grow from '@material-ui/core/Grow';
+import Header from '../../components/header/header';
 const LoginForm = () => {
   let history = useHistory();
 
@@ -15,9 +16,13 @@ const LoginForm = () => {
 
   const [passWord, setPassWord] = useState('');
 
-  const [firstName, setFirstName] = useState('');
+  const [userName, setUserName] = useState('');
 
-  const [lastName, setLastName] = useState('');
+  const [name, setName] = useState('');
+
+  const [address, setAddress] = useState('');
+
+  const [phone, setPhone] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -27,102 +32,57 @@ const LoginForm = () => {
 
   const handleChangePass = (event) => setPassWord(event.target.value);
 
-  const handleChangeFirstName = (event) => setFirstName(event.target.value);
-  const handleChangeLastName = (event) => setLastName(event.target.value);
+  const handleChangeUserName = (event) => setUserName(event.target.value);
+
+  const handleChangeName = (event) => setName(event.target.value);
+
+  const handleChangeAddress = (event) => setAddress(event.target.value);
+
+  const handleChangePhone = (event) => setPhone(event.target.value);
 
   const Onclick_Switch = () => history.push('/login');
   return (
     <div>
+      <Header />
       <div className={styles.body}>
         <Grow in timeout={1500}>
-          <div className={styles.col3}>
-            <img
-              className={styles.logo}
-              src="https://blog-consumer.glassdoor.com/app/uploads/sites/2/illustration-find-a-job-youl-love.svg"
-              alt=""
-            />
-            <h3>Hi, Welcome Back</h3>
-            <img
-              src="https://eshop.harleys.co.ke/login/svg/login-image.svg"
-              alt=""
-            />
-          </div>
-        </Grow>
-        <Grow in timeout={1500}>
           <div className={styles.col7}>
-            <Typography component={'span'} className={styles.headerCol7}>
-              Already have acccount?{' '}
-              <span onClick={Onclick_Switch} className={styles.btn_switch}>
-                Login
-              </span>
-            </Typography>
             <div className={styles.signInForm}>
               <div className={styles.titles}>
-                <div className={styles.titleForm}>
-                  Get start absolutely free
-                </div>
-                <div className={styles.subTitleForm}>
-                  Free forever. No credit card needed
-                </div>
+                <div className={styles.titleForm}>Đăng kí</div>
               </div>
-              <ValidatorForm className={styles.nameBox}>
-                <TextValidator
-                  fullWidth
-                  autoComplete="username"
-                  type="text"
-                  name="text"
-                  autoComplete="off"
-                  label="First Name"
-                  variant="outlined"
-                  value={firstName}
-                  onChange={handleChangeFirstName}
-                  validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
-                  className={styles.nameField}
-                />
-                <TextValidator
-                  fullWidth
-                  autoComplete="username"
-                  type="text"
-                  name="text"
-                  label="Last Name"
-                  autoComplete="off"
-                  value={lastName}
-                  variant="outlined"
-                  onChange={handleChangeLastName}
-                  validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
-                  className={styles.nameField1}
-                />
-              </ValidatorForm>
               <ValidatorForm className={styles.FormControl}>
+                <div className={styles.name}>
+                  Tài khoản <span className={styles.required}>*</span>
+                </div>
                 <TextValidator
                   fullWidth
-                  autoComplete="username"
-                  onChange={handleChangeEmail}
-                  type="Email"
-                  label="Email address"
-                  variant="outlined"
-                  name="email"
+                  type="text"
+                  name="text"
+                  variant="filled"
                   autoComplete="off"
-                  value={email}
-                  validators={['required', 'isEmail']}
-                  errorMessages={[
-                    'Email is required',
-                    'Email must be a valid email address',
-                  ]}
+                  label="Nhập tài khoản"
+                  value={userName}
+                  onChange={handleChangeUserName}
                   className={styles.textField}
+                  size="small"
+                  validators={['required']}
+                  errorMessages={['TextBox is required', 'Không được để trống']}
                 />
+                <div className={styles.name}>
+                  mật khẩu <span className={styles.required}>*</span>
+                </div>
                 <TextValidator
                   fullWidth
-                  autoComplete="current-password"
-                  type={showPassword ? 'text' : 'password'}
-                  label="Password"
                   name="password"
-                  onChange={handleChangePass}
-                  variant="outlined"
+                  type={showPassword ? 'text' : 'password'}
+                  variant="filled"
+                  autoComplete="current-password"
+                  label="Nhập mật khẩu"
                   value={passWord}
-                  className={styles.textField1}
+                  onChange={handleChangePass}
+                  className={styles.textField}
+                  size="small"
                   validators={['required', 'minStringLength:8']}
                   errorMessages={[
                     'PassWord is required',
@@ -142,29 +102,109 @@ const LoginForm = () => {
                     ),
                   }}
                 />
+                <div className={styles.name}>
+                  email <span className={styles.required}>*</span>
+                </div>
+                <TextValidator
+                  fullWidth
+                  name="email"
+                  type="Email"
+                  variant="filled"
+                  label="Nhập email"
+                  autoComplete="off"
+                  value={email}
+                  onChange={handleChangeEmail}
+                  size="small"
+                  validators={['required', 'isEmail']}
+                  className={styles.textField}
+                  errorMessages={[
+                    'Email is required',
+                    'Email must be a valid email address',
+                  ]}
+                />
+                <div className={styles.name}>
+                  Họ và tên <span className={styles.required}>*</span>
+                </div>
+                <TextValidator
+                  fullWidth
+                  type="Text"
+                  label="Nhập tên"
+                  name="name"
+                  variant="filled"
+                  autoComplete="off"
+                  value={name}
+                  onChange={handleChangeName}
+                  size="small"
+                  validators={['required']}
+                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  className={styles.textField}
+                />
+                <div className={styles.name}>
+                  Địa chỉ <span className={styles.required}>*</span>
+                </div>
+                <TextValidator
+                  fullWidth
+                  onChange={handleChangeAddress}
+                  type="Text"
+                  label="Nhập địa chỉ"
+                  variant="filled"
+                  name="address"
+                  autoComplete="off"
+                  value={address}
+                  size="small"
+                  validators={['required']}
+                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  className={styles.textField}
+                />
+                <div className={styles.name}>
+                  Số điện thoại <span className={styles.required}>*</span>
+                </div>
+                <TextValidator
+                  fullWidth
+                  onChange={handleChangePhone}
+                  type="Text"
+                  variant="filled"
+                  label="Nhập Số điện thoại"
+                  name="phone"
+                  autoComplete="off"
+                  value={phone}
+                  size="small"
+                  validators={['required']}
+                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  className={styles.textField}
+                />
 
-                <Button
+                {/* <Button
                   className={styles.btn_login}
                   variant="contained"
                   color="primary"
                 >
                   Register
-                </Button>
+                </Button> */}
+                <div className={styles.btn}>
+                  <button className={styles.button}>Đăng kí</button>
+                </div>
               </ValidatorForm>
-            </div>
-            <div className={styles.or}>
-              <span className={styles.titleOr}>Contact us at</span>
-            </div>
-            <div className={styles.loginByAPP}>
-              <button className={styles.google}>
-                <i className="fab fa-google"></i>
-              </button>
-              <button className={styles.facebook}>
-                <i className="fab fa-facebook-f"></i>
-              </button>
-              <button className={styles.twiter}>
-                <i className="fab fa-twitter"></i>
-              </button>
+              <Typography component={'div'} className={styles.headerCol7}>
+                Already have acccount?{' '}
+                <span onClick={Onclick_Switch} className={styles.btn_switch}>
+                  Login
+                </span>
+              </Typography>
+              <div className={styles.or}>
+                <span className={styles.titleOr}>Contact us at</span>
+              </div>
+              <div className={styles.loginByAPP}>
+                <button className={styles.google}>
+                  <i className="fab fa-google"></i>
+                </button>
+                <button className={styles.facebook}>
+                  <i className="fab fa-facebook-f"></i>
+                </button>
+                <button className={styles.twiter}>
+                  <i className="fab fa-twitter"></i>
+                </button>
+              </div>
             </div>
           </div>
         </Grow>

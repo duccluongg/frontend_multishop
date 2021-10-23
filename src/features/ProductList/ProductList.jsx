@@ -30,18 +30,14 @@ const Productlist = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const param = queryString.stringify(filters);
-    const getProductAPI = `http://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}`;
+    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}`;
     axios
       .get(getProductAPI)
       .then((res) => {
         const { page, page_size, total, results } = res?.data;
         if (res?.data) {
           setProduct(results);
-          console.log(total);
-          // Sai cho nay no dang tra ve 1 number
           setPagination({ page, page_size, total });
-
-          // setLoading(true);
         }
       })
       .catch((err) => {

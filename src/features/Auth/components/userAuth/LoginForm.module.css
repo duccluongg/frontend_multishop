@@ -43,64 +43,65 @@ header {
   margin: 48px 0px 40px;
   font-weight: 700;
   line-height: 1.5;
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding-left: 40px;
   padding-right: 96px;
   font-size: 2rem;
 }
-.logo {
-  width: 80px;
-  height: 40px;
-  margin-bottom: 10px;
-  margin-left: 25px;
-  margin-top: 10px;
-}
+
 .col7 {
   width: 100%;
   margin-left: 200px;
   margin-right: 200px;
   box-sizing: border-box;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .headerCol7 {
-  padding: 42px 40px 0px 56px;
-  float: right;
   line-height: 1.57143;
-  font-size: 0.875rem;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 600;
   margin-right: -200px;
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 .headerCol7 span {
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.57143;
   font-size: 0.875rem;
-  color: rgb(0, 171, 85);
+  color: rgb(145, 104, 65);
   text-decoration: none;
 }
 .signInForm {
-  max-width: 100%;
+  width: 75%;
   margin: auto;
-  padding: 70px 0px;
+  padding: 20px 0px 70px 0px;
 }
 .titles {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
-  align-items: baseline;
+  margin-bottom: 20px;
+  /* align-items: baseline; */
+  text-align: center;
 }
 .titleForm {
   margin: 0px 0px 8px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1;
   font-size: 2.5rem;
-  font-family: 'Caveat', cursive;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .subTitleForm {
   margin: 0px;
   line-height: 1.5;
   font-size: 1rem;
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: rgb(99, 115, 129);
 }
@@ -129,7 +130,7 @@ header {
   line-height: 1.71429;
   font-size: 0.9375rem;
   text-transform: capitalize;
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   min-width: 64px;
   padding: 7px 21px;
   border-radius: 8px;
@@ -173,7 +174,7 @@ header {
   margin: 0px;
   line-height: 1.57143;
   font-size: 0.875rem;
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   color: rgb(99, 115, 129);
 }
@@ -195,38 +196,102 @@ header {
 }
 .textField {
   margin-bottom: 30px !important;
-}
-.textField1 {
-  margin-bottom: 15px !important;
+  border: none;
+  outline: none;
 }
 .textField div {
-  border-radius: 10px;
+  background-color: #f7f7f7;
 }
-.textField1 div {
-  border-radius: 10px;
+.textField div:hover {
+  background-color: #f7f7f7;
 }
 .textField label {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
+  font-weight: 500;
+  /* text-transform: uppercase; */
 }
 .textField1 label {
-  font-family: 'Public Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .FormControl {
   width: 100%;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .btn_login {
   margin-top: 20px;
-  width: 100%;
+  width: 30%;
   border-radius: 10px;
   background-image: linear-gradient(90deg, #17ead9, #6178ec);
 }
 .btn_login span {
-  font-family: 'Public Sans', sans-serif;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 .btn_switch {
   cursor: pointer;
+}
+.remember {
+  margin-left: -10px;
+}
+.btn {
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+}
+.button {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  margin: 30px 0;
+  /* border: 2px solid #ff7675; */
+  padding: 10px 50px;
+  text-transform: uppercase;
+  transition: 1s all ease;
+  background: none;
+  outline: none;
+  border: 1px solid #333;
+  width: 200px;
+}
+.button::before {
+  background: #333;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+.button::before {
+  width: 0;
+  height: 100%;
+}
+.button:hover::before {
+  width: 100%;
+}
+.button:hover {
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.name {
+  margin-bottom: 10px;
+  margin-left: 0px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 13px;
+}
+.required {
+  margin-left: 2px;
+  color: red;
 }
