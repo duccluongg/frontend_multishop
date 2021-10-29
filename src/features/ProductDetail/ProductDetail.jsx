@@ -73,6 +73,7 @@ function ProductDetail(props) {
                   <div className={styles.listImg}>
                     {product.images?.slice(0, 5)?.map((item) => (
                       <img
+                        key={item.id}
                         className={styles.imgDetails}
                         src={item.url}
                         alt="img"
@@ -82,6 +83,7 @@ function ProductDetail(props) {
                   <div className={styles.listImgBig}>
                     {product.images?.slice(0, 5)?.map((item) => (
                       <img
+                        key={item.id}
                         className={styles.imgDetailsBig}
                         src={item.url}
                         alt="img"

@@ -12,8 +12,8 @@ const SlideBar = ({ category }) => {
         <div className={styles.categoryList}>
           <div className={styles.categoryItem}>
             {category.map((item) => (
-              <React.Fragment>
-                <div key={item.id} className={styles.categoryItemLink}>
+              <React.Fragment key={item.id}>
+                <div className={styles.categoryItemLink}>
                   <span
                     onClick={() => {
                       history.push(`/productList/${item.id}`);

@@ -63,7 +63,6 @@ const Header = () => {
               </ul>
             </div>
           )}
-          {/* {user?.name || <div className={styles.acc}>Tài khoản</div>} */}
           <div className={styles.cart}>
             Giỏ hàng
             <i className="fas fa-shopping-cart"></i>
