@@ -4,17 +4,20 @@ import styles from './ProductList.module.css';
 import Header from '../../components/header/header';
 import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useHistory } from 'react-router';
 import ProductFilter from './ProductFilter/ProductFilter';
 import queryString from 'query-string';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Pagination from '../../components/Pagination/Pagination';
 import EachProduct from './components/EachProduct/EachProduct';
+import SlideBar from './components/SlideBar/SlideBar';
 const Productlist = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [search, setSearch] = useState('');
+  const { search } = useLocation();
+  const query = new URLSearchParams(search);
+  console.log(query.get('brand'));
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,7 +33,10 @@ const Productlist = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const param = queryString.stringify(filters);
-    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}`;
+    const brandId = query.get('brand');
+    const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}&brands=${brandId} `;
+    console.log(getProductAPI);
+    console.log(brandId);
     axios
       .get(getProductAPI)
       .then((res) => {
@@ -45,7 +51,6 @@ const Productlist = () => {
         alert('Xảy ra lỗi');
       });
   }, [id, filters]);
-
   useEffect(() => {
     const getCategoryAPI = 'https://yshuynh.pythonanywhere.com/api/categories';
     axios
@@ -99,32 +104,7 @@ const Productlist = () => {
             <div className={styles.grid}>
               <div className={styles.grid_row}>
                 <div className={styles.col2}>
-                  <div className={styles.category}>
-                    <div className={styles.categoryHeading}>Danh mục</div>
-                    <div className={styles.categoryList}>
-                      <div className={styles.categoryItem}>
-                        {category.map((item) => (
-                          <div
-                            onClick={() => {
-                              history.push(`/productList/${item.id}`);
-                            }}
-                            key={item.id}
-                            className={styles.categoryItemLink}
-                          >
-                            {item.name}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className={styles.categoryHeading}>TÌM THEO</div>
-                    <div className={styles.categoryList}>
-                      <div className={styles.categoryItem}>
-                        <div className={styles.categoryItemLink}>
-                          Giá sản phẩm
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <SlideBar category={category} />
                 </div>
                 <div className={styles.grid__column10}>
                   <ProductFilter onChange={handleFiltersChange} />

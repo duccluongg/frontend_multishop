@@ -4,9 +4,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
 import axios from 'axios';
-import { useParams } from 'react-router';
+
 const Selection4 = () => {
-  const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   useEffect(() => {

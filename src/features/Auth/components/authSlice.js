@@ -7,7 +7,6 @@ export const userLogin = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await userApi.login(payload);
-      console.log(response);
       if (payload.remember)
         localStorage.setItem(storageUser.TOKEN, response.data.access_token);
       else

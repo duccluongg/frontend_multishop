@@ -1,14 +1,17 @@
-import styles from '../../ProductDetail.module.css';
+import styles from './ProductInfor.module.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import AddToCartForm from '../AddToCartForm/AddToCartForm';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import formatCash from '../../../../constants/formatPrice';
 // import { addToCart } from 'features/Cart/cartSlice';
-import { Snackbar } from '@material-ui/core';
+// import { Snackbar } from '@material-ui/core';
+import storageUser from '../../../../constants/storageUser';
 function ProductInfor(props) {
-  const { product } = props;
+  const { product, user } = props;
+  const salePrice = (product.sale_price * product.discount) / 100;
+  const Price = product.sale_price - salePrice;
   // const dispatch = useDispatch();
   // const [open, setOpen] = useState(false);
 
@@ -31,7 +34,7 @@ function ProductInfor(props) {
   // };
 
   return (
-    <div>
+    <div className={styles.info}>
       {/* <Snackbar
         open={open}
         autoHideDuration={3000}
@@ -44,14 +47,27 @@ function ProductInfor(props) {
       </Snackbar> */}
       <h4 className={styles.ProductName}>{product?.name}</h4>
       <h5 className={styles.ProductBand}>{product?.brand?.name}</h5>
-      <p className={styles.ProductDescription}>{product?.description}</p>
+      <div
+        className={styles.ProductDescription}
+        dangerouslySetInnerHTML={{ __html: product?.short_description }}
+      ></div>
 
       <div className={styles.ProductCartWapper}>
         <div className={styles.ProductPriceWapper}>
           {formatCash(`${product?.sale_price}`)} đ
-          {console.log(typeof `${product?.sale_price}`)}
+        </div>
+        <div className={styles.ProductPriceSale}>
+          {formatCash(`${Price}`)} đ
         </div>
         {/* <AddToCartForm onSubmit={handleAddToCartForm} /> */}
+        {user?.id ? (
+          <AddToCartForm />
+        ) : (
+          <div className={styles.needToLogin}>
+            {' '}
+            Bạn cần phải đăng nhập để mua sản phẩm
+          </div>
+        )}
       </div>
     </div>
   );

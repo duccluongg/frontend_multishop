@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import styles from './Register.module.css';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import Button from '@material-ui/core/Button';
 import { InputAdornment, IconButton, Typography } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';

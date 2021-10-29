@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import queryString from 'query-string';
 import styles from './ProductRelated.module.css';
 import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
-import { useParams } from 'react-router';
 function ProductRelated(props) {
   const [products, setProducts] = useState([]);
-  const filters = {
-    _limit: 5,
-    _start: 10,
-  };
   useEffect(() => {
-    const paramsString = queryString.stringify(filters);
     const getApi = `https://yshuynh.pythonanywhere.com/api/products`;
     axios.get(getApi).then((response) => {
       setProducts(response.data.results);
@@ -20,15 +13,14 @@ function ProductRelated(props) {
   }, []);
   return (
     <div className={styles}>
-      <div className={styles.header}>Sản phẩm liên quan</div>
+      <h2 className={styles.header}>Sản phẩm liên quan</h2>
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
             {products.map((item) => (
-              <div className={styles.grid__column24}>
+              <div className={styles.grid__column24} key={item.id}>
                 <Link
                   to={`/productDetail/${item.id}`}
-                  key={item.id}
                   className={styles.home__productitems}
                 >
                   <div

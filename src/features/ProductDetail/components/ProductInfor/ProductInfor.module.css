@@ -1,0 +1,53 @@
+.info {
+  width: 100%;
+}
+.ProductName {
+  font-size: 21px;
+  font-weight: 500;
+  color: rgb(13, 17, 54);
+  line-height: 1.2;
+  margin-bottom: 15px;
+  font-family: 'Roboto Slab', serif;
+  letter-spacing: 1px;
+}
+.ProductBand {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(13, 17, 54);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  line-height: 22px;
+}
+.ProductPriceWapper {
+  /* display: flex;
+  -webkit-box-align: center;
+  align-items: center; */
+  text-decoration: line-through;
+  color: #929292;
+  font-weight: 600;
+}
+.ProductCartWapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.needToLogin {
+  margin-top: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.ProductDescription {
+  font-family: 'Montserrat', sans-serif;
+}
+.ProductPriceSale {
+  /* display: flex;
+  -webkit-box-align: center;
+  align-items: center; */
+  font-size: 19px;
+  font-weight: 600;
+  color: rgb(0, 158, 127);
+}

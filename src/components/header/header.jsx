@@ -1,22 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './header.module.css';
-import Search from '../Search/Search';
+import axios from 'axios';
 import NavBar from './components/NavBar/NavBar';
+import storageUser from '../../constants/storageUser';
+import { Link } from 'react-router-dom';
 const Header = () => {
+  const [user, setUser] = useState({});
+  const logout = () => {
+    sessionStorage.removeItem(storageUser.TOKEN);
+  };
+  useEffect(() => {
+    const getApi = `https://yshuynh.pythonanywhere.com/api/user/me`;
+    if (sessionStorage.getItem(storageUser.TOKEN)) {
+      axios
+        .get(getApi, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem(
+              storageUser.TOKEN
+            )}`,
+          },
+        })
+        .then((response) => {
+          setUser(response.data);
+        });
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <div className={styles.container}>
-        {/* <div>
-          Hotline đặt hàng: <b>1900 6555</b>
-        </div> */}
         <div>Multishop</div>
         <div className={styles.info}>
-          <div className={styles.acc}>Tài khoản</div>
+          {user?.id ? (
+            <div className={styles.acc}>
+              {user.name}
+              <ul className={styles.notifyList}>
+                <Link to="/account" className={styles.notifyItem}>
+                  Thông tin cá nhân
+                </Link>
+                <Link to="/" className={styles.notifyItem}>
+                  Lịch sử đơn hàng
+                </Link>
+                <Link
+                  to="/Login"
+                  onClick={logout}
+                  className={styles.notifyItem}
+                >
+                  Đăng xuất
+                </Link>
+              </ul>
+            </div>
+          ) : (
+            <div className={styles.acc}>
+              Tài khoản
+              <ul className={styles.notifyList}>
+                <Link to="/login" className={styles.notifyItem}>
+                  Đăng nhập
+                </Link>
+                <Link to="/register" className={styles.notifyItem}>
+                  Đăng ký
+                </Link>
+              </ul>
+            </div>
+          )}
+          {/* {user?.name || <div className={styles.acc}>Tài khoản</div>} */}
           <div className={styles.cart}>
             Giỏ hàng
             <i className="fas fa-shopping-cart"></i>
           </div>
-          <Search />
         </div>
       </div>
       <div className={styles.border}></div>

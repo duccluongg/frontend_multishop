@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 const Selection2 = () => {
   const history = useHistory();
   const clickScreen = () => {
-    history.push('/productList/3');
+    history.push('/productList/7');
   };
   const clickKeyBoard = () => {
     history.push('/productList/2');
@@ -22,7 +22,7 @@ const Selection2 = () => {
             alt="ảnh pc"
           />
           <div className={styles.content}>
-            <h3>BÀN PHÍM</h3>
+            <h3>PC</h3>
             <div className={styles.btn}>
               <button onClick={clickKeyBoard} className={styles.button}>
                 XEM THÊM
@@ -52,7 +52,7 @@ const Selection2 = () => {
             alt="ảnh pc"
           />
           <div className={styles.content}>
-            <h3>GHẾ GAMING</h3>
+            <h3>Bàn phím</h3>
             <div className={styles.btn}>
               <button onClick={clickChair} className={styles.button}>
                 XEM THÊM

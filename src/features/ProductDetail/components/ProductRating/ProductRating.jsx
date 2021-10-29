@@ -1,4 +1,6 @@
+import { AddComment } from '@material-ui/icons';
 import React from 'react';
+import Commentform from './components/CommentForm';
 import styles from './ProductRating.module.css';
 const ProductRating = (props) => {
   const { product } = props;
@@ -7,6 +9,7 @@ const ProductRating = (props) => {
   return (
     <div className={styles.container}>
       <h4 className={styles.header}> Đánh giá sản phẩm</h4>
+      <div className={styles.commentFormTitle}>Write Comment</div>
       <div className={styles.rating}>
         {ratings ? (
           ratings.map((item) => (

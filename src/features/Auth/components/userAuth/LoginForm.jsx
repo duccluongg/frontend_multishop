@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from './LoginForm.module.css';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grow from '@material-ui/core/Grow';
 import {
@@ -22,6 +21,7 @@ import { showSnackbar } from '../../../../components/CustomSnackBar/snackBarSlid
 import { clearState } from '../authSlice';
 import CustomSnackBar from '../../../../components/CustomSnackBar/CustomSnackBar';
 import Header from '../../../../components/header/header';
+import storageUser from '../../../../constants/storageUser';
 const LoginForm = () => {
   let history = useHistory();
 
@@ -157,6 +157,24 @@ const LoginForm = () => {
                   <div className={styles.btn}>
                     <button className={styles.button}>Đăng nhập</button>
                   </div>
+                  <button
+                    className={styles.btn_login}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    onClick={() => localStorage.removeItem(storageUser.TOKEN)}
+                  >
+                    xoas local
+                  </button>
+                  <button
+                    className={styles.btn_login}
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    onClick={() => sessionStorage.removeItem(storageUser.TOKEN)}
+                  >
+                    xoas sess
+                  </button>
                   <Grid className={styles.headerCol7}>
                     Bạn chưa có tài khoản ? Đăng kí{' '}
                     <span

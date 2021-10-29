@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './Pagination.module.css';
 const Pagination = ({ pagination, onPageChange }) => {
   const { page, page_size, total } = pagination;
-  console.log(total);
   const totalPages = Math.ceil(total / page_size);
   function handlePageChange(newPage) {
     if (onPageChange) {
@@ -17,7 +16,7 @@ const Pagination = ({ pagination, onPageChange }) => {
         disabled={page <= 1}
         onClick={() => handlePageChange(page - 1)}
       >
-        <i class="fas fa-angle-left"></i>
+        <i className="fas fa-angle-left"></i>
       </button>
       <span>{page}</span>
       <button
@@ -25,7 +24,7 @@ const Pagination = ({ pagination, onPageChange }) => {
         disabled={page >= totalPages}
         onClick={() => handlePageChange(page + 1)}
       >
-        <i class="fas fa-angle-right"></i>
+        <i className="fas fa-angle-right"></i>
       </button>
     </div>
   );

@@ -5,12 +5,15 @@ import Main from './features/Main/main';
 import ProductDetail from './features/ProductDetail/ProductDetail';
 import Productlist from './features/ProductList/ProductList';
 import ScrollToTop from './constants/ScrollToTop';
+import Profile from './features/Profile/Profile';
+
 function App() {
   return (
     <Switch>
       <ScrollToTop>
         <Route path="/login" exact component={LoginForm} />
         <Route path="/register" exact component={Register} />
+        <Route path="/account" exact component={Profile} />
         <Route exact path="/productDetail/:id" component={ProductDetail} />
         <Route path="/productList/:id" component={Productlist} />
         <Route path="/" exact component={Main} />

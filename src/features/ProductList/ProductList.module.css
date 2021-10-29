@@ -26,53 +26,13 @@
   padding-right: 5px;
   width: 20%;
 }
-.categoryHeading {
-  font-size: 19px;
-  font-weight: 600;
-  padding: 8px 16px;
-  padding-top: 10px;
-  border-bottom: 1px solid #fff;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 2px;
-}
-.categoryList {
-  padding-left: 0px;
-  margin: 0px;
-}
-.categoryItem {
-  padding: 10px 0px 10px 15px;
-  /* border-bottom: 1px solid #fff; */
-  position: relative;
-}
-.categoryItemLink {
-  position: relative;
-  text-decoration: none;
-  font-size: 14px;
-  color: #333;
-  transition: right linear 0.1s;
-  right: 0;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
-}
-.categoryItemLink2 {
-  position: relative;
-  text-decoration: none;
-  font-size: 14px;
-  color: #333;
-  transition: right linear 0.1s;
-  right: 0;
-  display: flex;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
+
 .grid__column10 {
   width: 80%;
   padding-left: 5px;
   padding-right: 5px;
   margin-top: 20px;
+  margin-left: 50px;
 }
 .grid__column24 {
   padding-left: 5px;
@@ -249,17 +209,7 @@
   background-color: transparent;
   border-color: #333;
 }
-.categoryItemLink {
-  margin-bottom: 15px;
-}
-.categoryItemLink:hover {
-  cursor: pointer;
-  color: rgb(145, 104, 65);
-}
-.categoryItemLink2:hover {
-  cursor: pointer;
-  color: rgb(145, 104, 65);
-}
+
 .pagination {
   display: flex;
   flex-direction: row;
@@ -288,4 +238,93 @@
   height: 100vh;
   align-items: center;
   background-color: #fff;
+}
+.brand {
+  position: relative;
+  left: 20px;
+  margin-bottom: 20px;
+
+  margin-top: 15px;
+}
+
+.brand div {
+  margin-bottom: 5px;
+}
+.categoryItemLink {
+  margin-bottom: 25px;
+  position: relative;
+}
+.categoryItemLink span {
+  position: relative;
+  display: table;
+  width: 100%;
+}
+.categoryItemLink span:hover {
+  cursor: pointer;
+  color: rgb(145, 104, 65);
+}
+.categoryItemLink i {
+  position: absolute;
+  right: 7px;
+  top: 1px;
+}
+.categoryItemLink i:hover {
+  cursor: pointer;
+}
+.categoryItemLink2:hover {
+  cursor: pointer;
+  color: rgb(145, 104, 65);
+}
+.categoryHeading {
+  font-size: 19px;
+  font-weight: 600;
+  padding: 8px 16px;
+  padding-top: 10px;
+  border-bottom: 1px solid #fff;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+}
+.categoryList {
+  padding-left: 0px;
+  margin: 0px;
+}
+.categoryItem {
+  padding: 10px 0px 10px 15px;
+  /* border-bottom: 1px solid #fff; */
+  /* position: relative; */
+}
+.categoryItemLink {
+  position: relative;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  transition: right linear 0.1s;
+  right: 0;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+.categoryItemLink i {
+  color: rgb(54, 63, 77);
+}
+
+.categoryItemLink2 {
+  position: relative;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+  transition: right linear 0.1s;
+  right: 0;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.name {
+  margin-top: 10px;
+}
+.name:hover {
+  cursor: pointer;
+  color: rgb(145, 104, 65);
 }

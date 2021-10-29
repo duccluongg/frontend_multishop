@@ -15,6 +15,8 @@
 .info {
   display: flex;
   justify-content: space-between;
+  line-height: 52px;
+  cursor: pointer;
   /* margin-right: 125px; */
 }
 .info i {
@@ -22,14 +24,13 @@
   line-height: 18px;
 }
 .acc {
-  margin-right: 36px;
   cursor: pointer;
-  line-height: 52px;
 }
 .cart {
   margin-right: 30px;
   cursor: pointer;
   line-height: 52px;
+  margin-left: 36px;
 }
 .cart i {
   margin-bottom: 1px;
@@ -77,4 +78,39 @@
 .searchBox:hover > .searchTxt {
   width: 240px;
   padding: 0 6px;
+}
+.notifyList {
+  position: absolute;
+  width: 200px;
+  background: #fff;
+  list-style: none;
+  display: none;
+  right: -27px;
+  transform-origin: top;
+  transition: 0.3s;
+}
+.notifyItem {
+  font-size: 10px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+.notifyItem:hover {
+  color: rgb(145, 104, 65);
+}
+.acc {
+  position: relative;
+  transition: 0.3s;
+}
+.acc:hover .notifyList {
+  display: block;
+}
+.notifyList::before {
+  content: '';
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent rgb(239, 239, 239) transparent;
+  position: absolute;
+  right: 30px;
+  top: -20px;
 }

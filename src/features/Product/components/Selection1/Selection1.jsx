@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Selection1.module.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
 import { useHistory } from 'react-router';

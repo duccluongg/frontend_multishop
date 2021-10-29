@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import formatCash from '../../../../constants/formatPrice';
-import { useDispatch, useSelector } from 'react-redux';
 const Selection5 = () => {
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
-  const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=4`;

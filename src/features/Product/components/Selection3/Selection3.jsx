@@ -5,24 +5,18 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import formatCash from '../../../../constants/formatPrice';
-import Button from '../../../../components/Button/button';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductCategory, productSelector } from '../../Productslice';
-import { categorySelector, getCategoryApi } from '../../Categoryslice';
 const Selection3 = () => {
   const [product, setProduct] = useState([]);
-  const { list } = useSelector(productSelector);
-  const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
   const history = useHistory();
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=7`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=3`;
     axios.get(getApi).then((response) => {
       setProduct(response.data.results);
     });
   }, []);
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/7`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/categories/3`;
     axios.get(getApi).then((response) => {
       setCategory(response.data);
       // console.log(response.data.data);

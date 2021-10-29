@@ -43,8 +43,8 @@ function AddToCartForm({ onSubmit = null }) {
         size="large"
         className={styles.btn_cart}
       >
-        <i class="fas fa-shopping-cart"></i>
-        Add to Cart
+        <i className="fas fa-shopping-cart"></i>
+        Thêm vào giỏ hàng
       </button>
     </form>
   );
