@@ -67,7 +67,13 @@ const LoginForm = () => {
     }
     if (isSuccess) {
       dispatch(clearState());
-      history.push('/login');
+      dispatch(
+        showSnackbar({
+          type: SNACK_BAR_TYPE.SUCCESS,
+          message: 'đăng kí thành công',
+        })
+      );
+      setTimeout(history.push('/login'), 1000);
     }
   }, [isError, isSuccess]);
   return (

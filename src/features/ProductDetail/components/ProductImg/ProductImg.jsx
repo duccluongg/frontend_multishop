@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../ProductDetail.module.css';
 import { Link } from 'react-router-dom';
-const ProductImg = (product) => {
+const ProductImg = ({ product }) => {
   return (
     <React.Fragment>
       <div className={styles.back_btn}>

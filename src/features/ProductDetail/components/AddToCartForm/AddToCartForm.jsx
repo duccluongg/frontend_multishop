@@ -1,41 +1,14 @@
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import QuantityField from 'components/form-controls/QuantityField';
 import PropTypes from 'prop-types';
 import React from 'react';
-// import { useForm } from 'react-hook-form';
-// import * as yup from 'yup';
 import styles from './AddToCartForm.module.css';
-
 AddToCartForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function AddToCartForm({ onSubmit = null }) {
-  // const schema = yup.object().shape({
-  //   quantity: yup
-  //     .number()
-  //     .required('Please enter quantity')
-  //     .min(1, 'Minimum value is 1')
-  //     .typeError('Please enter a number'),
-  // });
-
-  // const form = useForm({
-  //   defaultValues: {
-  //     quantity: 1,
-  //   },
-  //   resolver: yupResolver(schema),
-  // });
-
-  // const handleSubmit = async (values) => {
-  //   if (onSubmit) {
-  //     await onSubmit(values);
-  //   }
-  // };
-
+function AddToCartForm() {
   return (
     <form>
       <div className={styles.title}>Số lượng</div>
-      {/* <QuantityField name="quantity" /> */}
       <button
         type="submit"
         variant="contained"

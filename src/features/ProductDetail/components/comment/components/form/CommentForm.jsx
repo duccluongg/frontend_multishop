@@ -17,10 +17,8 @@ const CommentForm = ({ comment }) => {
             {comment.created_at.substring(0, 10)}
           </div>
           <div className={styles.star}>
-            {comment.rate}
-            {/* <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i> */}
+            {Array(comment.rate).fill(<i class="fas fa-star "></i>)}
+            {Array(5 - comment.rate).fill(<i class="far fa-star"></i>)}
           </div>
         </div>
         <div className={styles.commentText}>{comment.comment}</div>

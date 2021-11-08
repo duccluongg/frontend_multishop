@@ -21,20 +21,20 @@ export const registerUser = createAsyncThunk(
           }),
         }
       );
-      let data = await response.json();
-      if (response.status === 200) {
-        localStorage.setItem('token', data.token);
-        return {
-          ...data,
-          username: userName,
-          email: email,
-          name: name,
-          address: address,
-          phone: phone,
-        };
-      } else {
-        return thunkAPI.rejectWithValue(data);
-      }
+      // let data = await response.json();
+      // if (response.status === 200) {
+      //   localStorage.setItem('token', data.token);
+      //   return {
+      //     ...data,
+      //     username: userName,
+      //     email: email,
+      //     name: name,
+      //     address: address,
+      //     phone: phone,
+      //   };
+      // } else {
+      //   return thunkAPI.rejectWithValue(data);
+      // }
     } catch (e) {
       console.log('Error', e.response.data);
       return thunkAPI.rejectWithValue(e.response.data);
