@@ -47,6 +47,7 @@ const LoginForm = () => {
 
   const handleSubmit = () => {
     dispatch(userLogin({ username, password, remember }));
+    console.log({ username, password, remember });
   };
 
   useEffect(() => {
@@ -64,6 +65,7 @@ const LoginForm = () => {
   const handleCheckBoxChange = () => {
     setRemember(!remember);
   };
+
   return (
     <React.Fragment>
       <Header />

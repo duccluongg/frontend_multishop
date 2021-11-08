@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styles from './Register.module.css';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -8,8 +8,15 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { useHistory } from 'react-router';
 import Grow from '@material-ui/core/Grow';
 import Header from '../../components/header/header';
+import { useSelector, useDispatch } from 'react-redux';
+import { registerUser, registerSelector, clearState } from './registerSlice';
+import { showSnackbar } from '../../components/CustomSnackBar/snackBarSlide';
+import { SNACK_BAR_TYPE } from '../../constants/snackBarType';
+import CustomSnackBar from '../../components/CustomSnackBar/CustomSnackBar';
 const LoginForm = () => {
-  let history = useHistory();
+  const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
 
@@ -40,17 +47,41 @@ const LoginForm = () => {
   const handleChangePhone = (event) => setPhone(event.target.value);
 
   const Onclick_Switch = () => history.push('/login');
+
+  const { isSuccess, isError, errorMessage } = useSelector(registerSelector);
+  const onSubmit = () => {
+    dispatch(registerUser({ userName, passWord, email, address, name, phone }));
+    console.log({ userName, passWord, email, address, name, phone });
+  };
+  useEffect(() => {
+    return () => {
+      dispatch(clearState());
+    };
+  }, []);
+  useEffect(() => {
+    if (isError) {
+      dispatch(
+        showSnackbar({ type: SNACK_BAR_TYPE.ERROR, message: errorMessage })
+      );
+      dispatch(clearState());
+    }
+    if (isSuccess) {
+      dispatch(clearState());
+      history.push('/login');
+    }
+  }, [isError, isSuccess]);
   return (
     <div>
       <Header />
       <div className={styles.body}>
+        <CustomSnackBar />
         <Grow in timeout={1500}>
           <div className={styles.col7}>
             <div className={styles.signInForm}>
               <div className={styles.titles}>
                 <div className={styles.titleForm}>Đăng kí</div>
               </div>
-              <ValidatorForm className={styles.FormControl}>
+              <ValidatorForm className={styles.FormControl} onSubmit={onSubmit}>
                 <div className={styles.name}>
                   Tài khoản <span className={styles.required}>*</span>
                 </div>
@@ -66,7 +97,7 @@ const LoginForm = () => {
                   className={styles.textField}
                   size="small"
                   validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  errorMessages={['Nhập tên tài khoản', 'Không được để trống']}
                 />
                 <div className={styles.name}>
                   mật khẩu <span className={styles.required}>*</span>
@@ -82,11 +113,8 @@ const LoginForm = () => {
                   onChange={handleChangePass}
                   className={styles.textField}
                   size="small"
-                  validators={['required', 'minStringLength:8']}
-                  errorMessages={[
-                    'PassWord is required',
-                    'Must enter 8 characters',
-                  ]}
+                  validators={['required', 'minStringLength:3']}
+                  errorMessages={['Nhập mật khẩu', 'Must enter 3 characters']}
                   InputProps={{
                     // <-- This is where the toggle button is added.
                     endAdornment: (
@@ -117,7 +145,7 @@ const LoginForm = () => {
                   validators={['required', 'isEmail']}
                   className={styles.textField}
                   errorMessages={[
-                    'Email is required',
+                    'Nhập Email',
                     'Email must be a valid email address',
                   ]}
                 />
@@ -135,7 +163,7 @@ const LoginForm = () => {
                   onChange={handleChangeName}
                   size="small"
                   validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  errorMessages={['Nhập tên', 'Không được để trống']}
                   className={styles.textField}
                 />
                 <div className={styles.name}>
@@ -152,7 +180,7 @@ const LoginForm = () => {
                   value={address}
                   size="small"
                   validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  errorMessages={['Nhập địa chỉ', 'Không được để trống']}
                   className={styles.textField}
                 />
                 <div className={styles.name}>
@@ -169,19 +197,13 @@ const LoginForm = () => {
                   value={phone}
                   size="small"
                   validators={['required']}
-                  errorMessages={['TextBox is required', 'Không được để trống']}
+                  errorMessages={['Nhập số điện thoại', 'Không được để trống']}
                   className={styles.textField}
                 />
-
-                {/* <Button
-                  className={styles.btn_login}
-                  variant="contained"
-                  color="primary"
-                >
-                  Register
-                </Button> */}
                 <div className={styles.btn}>
-                  <button className={styles.button}>Đăng kí</button>
+                  <button type="submit" className={styles.button}>
+                    Đăng kí
+                  </button>
                 </div>
               </ValidatorForm>
               <Typography component={'div'} className={styles.headerCol7}>

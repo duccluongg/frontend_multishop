@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
 import { useLocation, useParams } from 'react-router';
 import { useHistory } from 'react-router';
-import ProductFilter from './ProductFilter/ProductFilter';
+import ProductFilter from './components/ProductFilter/ProductFilter';
 import queryString from 'query-string';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Pagination from '../../components/Pagination/Pagination';
@@ -34,7 +34,6 @@ const Productlist = () => {
     const param = queryString.stringify(filters);
     const brandId = query.get('brand');
     const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}&brands=${brandId} `;
-
     axios
       .get(getProductAPI)
       .then((res) => {
@@ -55,7 +54,6 @@ const Productlist = () => {
       .get(getCategoryAPI)
       .then((res) => {
         setCategory(res.data);
-        // setLoading(true);
       })
       .catch((err) => {
         console.log(err);

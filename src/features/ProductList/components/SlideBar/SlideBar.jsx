@@ -30,7 +30,7 @@ const SlideBar = ({ category }) => {
                           key={item1.id}
                           onClick={() => {
                             history.push(
-                              `/productList/${item.id}&brand=${item1.id}`
+                              `/productList/${item.id}&brand=${item1.id} `
                             );
                           }}
                         >

@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import formatCash from '../../../../constants/formatPrice';
 import { addToCart } from '../../../Cart/cartSlice';
-function ProductInfor(props) {
+function ProductInfo(props) {
   const { product, user } = props;
   const dispatch = useDispatch();
   const salePrice = (product.sale_price * product.discount) / 100;
@@ -47,4 +47,4 @@ function ProductInfor(props) {
   );
 }
 
-export default ProductInfor;
+export default ProductInfo;
