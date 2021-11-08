@@ -21,7 +21,9 @@ const NavBar = () => {
   }, []);
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
+  }, []);
+  useEffect(() => {
+    return setTimeout(() => {
       setLoading(false);
     }, 500);
   }, []);

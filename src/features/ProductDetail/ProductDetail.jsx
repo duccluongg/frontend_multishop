@@ -41,6 +41,8 @@ function ProductDetail(props) {
   }, [id]);
   useEffect(() => {
     setLoading(true);
+  }, []);
+  useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1500);

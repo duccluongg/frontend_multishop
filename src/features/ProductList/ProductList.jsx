@@ -17,7 +17,6 @@ const Productlist = () => {
   const { id } = useParams();
   const { search } = useLocation();
   const query = new URLSearchParams(search);
-  console.log(query.get('brand'));
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,8 +34,7 @@ const Productlist = () => {
     const param = queryString.stringify(filters);
     const brandId = query.get('brand');
     const getProductAPI = `https://yshuynh.pythonanywhere.com/api/products?${param}&category=${id}&brands=${brandId} `;
-    console.log(getProductAPI);
-    console.log(brandId);
+
     axios
       .get(getProductAPI)
       .then((res) => {
@@ -66,11 +64,12 @@ const Productlist = () => {
   }, []);
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
+  }, []);
+  useEffect(() => {
+    return setTimeout(() => {
       setLoading(false);
     }, 1500);
   }, []);
-
   const handlePageChange = (newPage) => {
     console.log(newPage);
     setFilters({

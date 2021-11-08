@@ -4,11 +4,13 @@ import axios from 'axios';
 import NavBar from './components/NavBar/NavBar';
 import storageUser from '../../constants/storageUser';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Header = () => {
   const [user, setUser] = useState({});
   const logout = () => {
     sessionStorage.removeItem(storageUser.TOKEN);
   };
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/me`;
     if (sessionStorage.getItem(storageUser.TOKEN)) {
@@ -63,10 +65,12 @@ const Header = () => {
               </ul>
             </div>
           )}
-          <div className={styles.cart}>
+          <Link to="/cart" className={styles.cart}>
             Giỏ hàng
-            <i className="fas fa-shopping-cart"></i>
-          </div>
+            <i className="fas fa-shopping-cart">
+              {user?.id ? <span>{cartTotalQuantity}</span> : <span>0</span>}
+            </i>
+          </Link>
         </div>
       </div>
       <div className={styles.border}></div>

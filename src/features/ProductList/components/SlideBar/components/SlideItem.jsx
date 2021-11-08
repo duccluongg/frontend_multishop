@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from '../../../ProductList.module.css';
 const SlideItem = (props) => {
   const [open, setOpen] = useState(false);
   return (
