@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 1.25rem 0 3.125rem;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1200px;
+  font-family: 'Montserrat', sans-serif;
+}
+.header {
+  display: flex;
+  line-height: 50px;
+  padding: 15px 0;
+  border-bottom: 1px solid #efefef;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  padding-bottom: 24px;
+}
+.imgHeader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.col3 {
+  width: 18%;
+}
+.col7 {
+  width: 85%;
+  margin-left: 27px;
+  padding: 0px 30px;
+  border-left: 1px solid #efefef;
+}
+.item {
+  margin-bottom: 25px;
+  display: flex;
+  cursor: pointer;
+}
+.item i {
+  margin-left: 10px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 20px;
+}
+.itemOrder {
+  border-bottom: 1px solid #efefef;
+  margin-top: 20px;
+}
+.row1 {
+  display: flex;
+  justify-content: space-between;
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+}
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+}
+.left img {
+  width: 100px;
+  height: 100px;
+}
+.itemName {
+  width: 70%;
+}
+.row2 {
+  padding-top: 5px;
+
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.priceBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.salePrice {
+  margin-right: 20px;
+  text-decoration: line-through;
+  color: #929292;
+}
+.price {
+  color: rgb(145, 104, 65);
+  font-weight: 600;
+}
+.brandName {
+  font-weight: 600;
+}
+.count {
+  font-weight: 600;
+}
+.info {
+  margin-left: 10px;
+}
+
+.totalPrice {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.totalPrice span {
+  color: rgb(145, 104, 65);
+  margin-left: 10px;
+}

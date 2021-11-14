@@ -328,3 +328,14 @@
   cursor: pointer;
   color: rgb(145, 104, 65);
 }
+.rating {
+  position: absolute;
+  right: 14px;
+  top: 15px;
+  color: #fff;
+  padding: 4px 6px;
+  border-radius: 50%;
+  background-color: #333;
+  width: 33px;
+  text-align: center;
+}

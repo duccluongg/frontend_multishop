@@ -4,8 +4,13 @@ import styles from './Profile.module.css';
 import Header from '../../components/header/header';
 import Footer from '../../components/Footer/Footer';
 import storageUser from '../../constants/storageUser';
+import { useHistory } from 'react-router';
 const Profile = () => {
   const [user, setUser] = useState({});
+  const history = useHistory();
+  const toAcc = () => history.push('/account');
+  const toCart = () => history.push('/cart');
+  const toOrder = () => history.push('/order');
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/me`;
     axios
@@ -32,13 +37,13 @@ const Profile = () => {
             <div className={styles.nameHeader}>{user.name}</div>
           </div>
           <div className={styles.list}>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={toAcc}>
               <i className="far fa-user"></i>Tài khoản của tôi
             </div>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={toCart}>
               <i className="fas fa-shopping-cart"></i>Giỏ hàng
             </div>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={toOrder}>
               <i className="fas fa-list"></i>Đơn hàng
             </div>
           </div>

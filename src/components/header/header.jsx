@@ -40,7 +40,7 @@ const Header = () => {
                 <Link to="/account" className={styles.notifyItem}>
                   Thông tin cá nhân
                 </Link>
-                <Link to="/" className={styles.notifyItem}>
+                <Link to="/order" className={styles.notifyItem}>
                   Lịch sử đơn hàng
                 </Link>
                 <Link

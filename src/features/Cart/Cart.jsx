@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  initialCart,
   addToCart,
   clearCart,
   decreaseCart,
@@ -15,10 +16,15 @@ import formatCash from '../../constants/formatPrice';
 import axios from 'axios';
 import storageUser from '../../constants/storageUser';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { useHistory } from 'react-router';
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const history = useHistory();
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
+  const toCheckOut = () => {
+    history.push('/checkout');
+  };
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -45,15 +51,89 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
+  useEffect(() => {
+    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts`;
+    axios
+      .get(getCart, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+        },
+      })
+      .then((response) => {
+        if (response.data) {
+          dispatch(initialCart(response.data));
+        }
+      });
+  }, [dispatch]);
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/add`;
+    axios
+      .put(
+        getCart,
+        {
+          product: product.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem(
+              storageUser.TOKEN
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.data) {
+          dispatch(addToCart(product));
+        }
+      });
   };
   const handleDecreaseCart = (product) => {
-    dispatch(decreaseCart(product));
+    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
+    axios
+      .put(
+        getCart,
+        {
+          product: product.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem(
+              storageUser.TOKEN
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.data) {
+          dispatch(decreaseCart(product));
+        }
+      });
   };
   const handleRemoveFromCart = (product) => {
-    dispatch(removeFromCart(product));
+    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
+    axios
+      .put(
+        getCart,
+        {
+          product: product.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem(
+              storageUser.TOKEN
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.data) {
+          dispatch(removeFromCart(product));
+        }
+      });
   };
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -166,7 +246,9 @@ const Cart = () => {
                           </span>
                         </div>
                         <div className="btn">
-                          <button className="button">Thanh toán ngay</button>
+                          <button onClick={toCheckOut} className="button">
+                            Thanh toán ngay
+                          </button>
                         </div>
                         <div className="continue-shopping">
                           <Link to="/">

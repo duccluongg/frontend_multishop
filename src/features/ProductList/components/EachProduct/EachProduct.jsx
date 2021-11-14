@@ -20,6 +20,7 @@ const EachProduct = (props) => {
                   backgroundImage: `url(${item.thumbnail})`,
                 }}
               ></div>
+              <div className={styles.rating}>{item.avg_rating}</div>
               <h4 className={styles.home__productitemsname}>{item.name}</h4>
               <div className={styles.home__productprice}>
                 <span className={styles.home__productitemsprice}>

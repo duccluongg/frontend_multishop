@@ -7,6 +7,8 @@ import Productlist from './features/ProductList/ProductList';
 import ScrollToTop from './constants/ScrollToTop';
 import Profile from './features/Profile/Profile';
 import Cart from './features/Cart/Cart';
+import Order from './features/Order/Order';
+import Checkout from './features/Checkout/Checkout';
 function App() {
   return (
     <Switch>
@@ -14,6 +16,8 @@ function App() {
         <Route path="/login" exact component={LoginForm} />
         <Route path="/register" exact component={Register} />
         <Route path="/account" exact component={Profile} />
+        <Route path="/checkout" exact component={Checkout} />
+        <Route path="/order" exact component={Order} />
         <Route exact path="/productDetail/:id" component={ProductDetail} />
         <Route path="/cart" exact component={Cart} />
         <Route path="/productList/:id" component={Productlist} />

@@ -75,6 +75,10 @@
   background-color: #333;
   color: #fff;
 }
+.star {
+  color: #ffc107;
+  margin-bottom: 7px;
+}
 /* .button::before {
   background: #333;
   content: '';
