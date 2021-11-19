@@ -50,10 +50,6 @@
 /* .listDetails {
   width: 70%;
 } */
-.listItems {
-  display: flex;
-  margin-bottom: 30px;
-}
 .header {
   margin-bottom: 20px;
   font-size: 16px;
@@ -66,6 +62,10 @@
 .methodToPay div {
   margin-bottom: 5px;
   margin-top: 10px;
+}
+.listItems {
+  display: flex;
+  margin-bottom: 30px;
 }
 .item img {
   width: 100px;

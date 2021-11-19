@@ -17,6 +17,7 @@ const cartSlice = createSlice({
         return tempCart.push({ ...item.product, cartQuantity: item.count });
       });
       state.cartItems = tempCart;
+      console.log(tempCart);
     },
     addToCart(state, action) {
       const existingIndex = state.cartItems.findIndex(

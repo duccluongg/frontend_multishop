@@ -60,7 +60,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 90%;
+  width: 88%;
 }
 .left img {
   width: 100px;
@@ -81,6 +81,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 13%;
 }
 .salePrice {
   margin-right: 20px;
@@ -99,8 +100,14 @@
 }
 .info {
   margin-left: 10px;
+  width: 30%;
 }
-
+.info div {
+  margin-bottom: 10px;
+}
+.listImg {
+  width: 70%;
+}
 .totalPrice {
   display: flex;
   justify-content: flex-end;
@@ -110,4 +117,45 @@
 .totalPrice span {
   color: rgb(145, 104, 65);
   margin-left: 10px;
+}
+.shipping {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.shipping span {
+  color: rgb(145, 104, 65);
+  margin-left: 28px;
+}
+.itemName {
+  font-weight: 600;
+}
+.phoneUser {
+  font-weight: 600;
+}
+.payment {
+  font-weight: 600;
+}
+.needConfimed {
+  font-weight: 600;
+  color: red;
+}
+.confimed {
+  font-weight: 600;
+  color: green;
+}
+.success {
+  font-weight: 600;
+  color: green;
+}
+.Shipping {
+  font-weight: 600;
+  color: orange;
+}
+.details {
+  margin-top: 40px;
+  font-weight: 600;
+  color: rgb(145, 104, 65);
+  cursor: pointer;
 }

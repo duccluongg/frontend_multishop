@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../Order.module.css';
 import storageUser from '../../../constants/storageUser';
+import formatCash from '../../../constants/formatPrice';
 const ListOrder = () => {
-  const [order, setOrder] = useState({});
-  console.log(order);
+  const [order, setOrder] = useState([]);
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders?page=1&page_size=5`;
     axios
@@ -14,43 +14,66 @@ const ListOrder = () => {
         },
       })
       .then((response) => {
-        setOrder(response.data);
+        setOrder(response.data.results);
       });
   }, []);
+  console.log(order);
+  const switchCase = (props) => {
+    switch (props) {
+      case 'waiting_confirm':
+        return <div className={styles.needConfimed}>Đang chờ xác thực</div>;
+      case 'confirmed':
+        return <div className={styles.confimed}>Đã xác nhận</div>;
+      case 'shipping':
+        return <div className={styles.Shipping}>Đang vận chuyển</div>;
+      case 'success':
+        return <div className={styles.success}>Giao hàng thành công</div>;
+      default:
+        return <div></div>;
+    }
+  };
   return (
     <div className={styles.col7}>
-      {/* {order.results.map((item) => (
-        <div className={styles.itemOrder}>
+      {order.map((item) => (
+        <div key={item.id} className={styles.itemOrder}>
           <div className={styles.row1}>
             <div className={styles.brandName}>Multishop</div>
-            <div className={styles.status}>{item.status}</div>
+            <div className={styles.status}>{switchCase(item.status)}</div>
           </div>
           <div className={styles.row2}>
             <div className={styles.left}>
-              <img
-                src="https://lh3.googleusercontent.com/9jsqa2sCGaVFLcy7vVx1EuW0ngB3kyEHzm3KZLpyAeblS6WmyQkwH3TZfzSNPrVingimxLpN20fogK123T3s"
-                alt=""
-              />
               <div className={styles.info}>
-                <div className={styles.itemName}>
-                  Laptop Acer Swift 3 SF315-52-52Z7 (NX.GZBSV.004) (15.6"
-                  FHD/i5-8250U/4GB/1TB HDD/UHD 620/Win10/1.6 kg)
-                </div>
-                <div className={styles.count}>x10</div>
+                <div className={styles.idCard}>Đơn hàng số: {item.id}</div>
+                <div className={styles.itemName}>{item.name}</div>
+                <div className={styles.phoneUser}>{item.phone_number}</div>
+                <div className={styles.payment}>{item.payment.name}</div>
+                <div className={styles.details}>Xem chi tiết đơn hàng</div>
+              </div>
+              <div className={styles.listImg}>
+                {item.items.map((items) => (
+                  <img key={items.id} src={items.product.thumbnail} alt="" />
+                ))}
               </div>
             </div>
             <div className={styles.priceBox}>
-              <div className={styles.salePrice}>80.000đ</div>
-              <div className={styles.price}>55.900đ</div>
+              <div className={styles.price}>
+                {formatCash(item.sum_price.toString())} đ
+              </div>
             </div>
           </div>
           <div className={styles.row3}>
+            <div className={styles.shipping}>
+              {' '}
+              Phí ship:{' '}
+              <span>{formatCash(item.shipping_fee.toString())} đ</span>
+            </div>
             <div className={styles.totalPrice}>
-              Tổng số tiền: <span>55.900đ </span>
+              Tổng số tiền:{' '}
+              <span>{formatCash(item.total_cost.toString())} đ</span>
             </div>
           </div>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };

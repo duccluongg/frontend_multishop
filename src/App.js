@@ -9,6 +9,7 @@ import Profile from './features/Profile/Profile';
 import Cart from './features/Cart/Cart';
 import Order from './features/Order/Order';
 import Checkout from './features/Checkout/Checkout';
+import DetailsOrder from './features/DetailsOrder/DetailsOrder';
 function App() {
   return (
     <Switch>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/checkout" exact component={Checkout} />
         <Route path="/order" exact component={Order} />
         <Route exact path="/productDetail/:id" component={ProductDetail} />
+        <Route exact path="/detailOrder" component={DetailsOrder} />
         <Route path="/cart" exact component={Cart} />
         <Route path="/productList/:id" component={Productlist} />
         <Route path="/" exact component={Main} />

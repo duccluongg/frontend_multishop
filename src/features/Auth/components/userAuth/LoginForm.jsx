@@ -158,7 +158,7 @@ const LoginForm = () => {
                   <div className={styles.btn}>
                     <button className={styles.button}>Đăng nhập</button>
                   </div>
-                  <button
+                  {/* <button
                     className={styles.btn_login}
                     variant="contained"
                     color="primary"
@@ -175,7 +175,7 @@ const LoginForm = () => {
                     onClick={() => sessionStorage.removeItem(storageUser.TOKEN)}
                   >
                     xoas sess
-                  </button>
+                  </button> */}
                   <Grid className={styles.headerCol7}>
                     Bạn chưa có tài khoản ? Đăng kí{' '}
                     <span

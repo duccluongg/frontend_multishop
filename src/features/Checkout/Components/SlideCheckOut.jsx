@@ -17,14 +17,12 @@ const SlideCheckOut = () => {
               <img src={item.thumbnail} alt="" />
               <div>
                 <div className={styles.itemName}>{item.name}</div>
-                <div className={styles.itemQuantity}>
-                  x {cart.cartTotalQuantity}
-                </div>
+                <div className={styles.itemQuantity}>x {item.cartQuantity}</div>
               </div>
             </div>
             <div className={styles.itemPrice}>
               {' '}
-              {formatCash(item.price.toString())} đ
+              {formatCash((item.price * item.cartQuantity).toString())} đ
             </div>
           </div>
         ))}

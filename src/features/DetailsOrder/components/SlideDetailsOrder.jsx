@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../Order.module.css';
+import styles from '../DetailsOrder.module.css';
 import { useHistory } from 'react-router';
 import storageUser from '../../../constants/storageUser';
 import axios from 'axios';
-const SlideOrder = () => {
+const SlideDetailsOrder = () => {
   const [user, setUser] = useState({});
   const history = useHistory();
   const toAcc = () => history.push('/account');
@@ -32,13 +32,13 @@ const SlideOrder = () => {
         <div className={styles.nameHeader}>{user.name}</div>
       </div>
       <div className={styles.list}>
-        <div className={styles.item} onClick={toAcc}>
+        <div className={styles.item1} onClick={toAcc}>
           <i className="far fa-user"></i>Tài khoản của tôi
         </div>
-        <div className={styles.item} onClick={toCart}>
+        <div className={styles.item1} onClick={toCart}>
           <i className="fas fa-shopping-cart"></i>Giỏ hàng
         </div>
-        <div className={styles.item} onClick={toOrder}>
+        <div className={styles.item1} onClick={toOrder}>
           <i className="fas fa-list"></i>Đơn hàng
         </div>
       </div>
@@ -46,4 +46,4 @@ const SlideOrder = () => {
   );
 };
 
-export default SlideOrder;
+export default SlideDetailsOrder;

@@ -60,6 +60,7 @@ const Cart = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
         if (response.data) {
           dispatch(initialCart(response.data));
         }
@@ -113,12 +114,12 @@ const Cart = () => {
       });
   };
   const handleRemoveFromCart = (product) => {
-    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
+    const removeCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
     axios
-      .put(
-        getCart,
+      .delete(
+        removeCart,
         {
-          product: product.id,
+          cart_id: cart.id,
         },
         {
           headers: {
@@ -192,6 +193,7 @@ const Cart = () => {
                         cart.cartItems.map((cartItem) => (
                           <div className="cart-item" key={cartItem.id}>
                             <div className="cart-product">
+                              {console.log(cartItem)}
                               <img
                                 src={cartItem.thumbnail}
                                 alt={cartItem.name}
