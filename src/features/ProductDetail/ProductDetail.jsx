@@ -12,7 +12,7 @@ import storageUser from '../../constants/storageUser';
 import ProductImg from './components/ProductImg/ProductImg';
 function ProductDetail() {
   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -36,14 +36,13 @@ function ProductDetail() {
       const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
       axios.get(getApi).then((response) => {
         setProduct(response.data);
+        console.log(response.data);
       });
     }
   }, [id]);
+
   useEffect(() => {
-    setLoading(true);
-  }, []);
-  useEffect(() => {
-    setTimeout(() => {
+    return setTimeout(() => {
       setLoading(false);
     }, 1500);
   }, []);
@@ -93,7 +92,7 @@ function ProductDetail() {
 
               <Comment user={user} currentUserId={1} />
               <div className={styles.RelatedWapper}>
-                <ProductRelated />
+                <ProductRelated product={product} />
               </div>
             </div>
           </div>

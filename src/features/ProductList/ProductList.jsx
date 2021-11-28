@@ -19,7 +19,7 @@ const Productlist = () => {
   const query = new URLSearchParams(search);
   const [product, setProduct] = useState([]);
   const [category, setCategory] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({
     page: 1,
     page_size: 12,
@@ -60,9 +60,9 @@ const Productlist = () => {
         alert('Xảy ra lỗi');
       });
   }, []);
-  useEffect(() => {
-    setLoading(true);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(true);
+  // }, []);
   useEffect(() => {
     return setTimeout(() => {
       setLoading(false);

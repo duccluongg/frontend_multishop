@@ -20,6 +20,7 @@ import { useHistory } from 'react-router';
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const history = useHistory();
+  console.log(history);
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
   const toCheckOut = () => {

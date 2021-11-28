@@ -3,21 +3,24 @@ import axios from 'axios';
 import styles from './ProductRelated.module.css';
 import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
-function ProductRelated(props) {
-  const [products, setProducts] = useState([]);
+function ProductRelated({ product }) {
+  const [productsRelated, setProductsRelated] = useState([]);
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=${product.category.id}`;
+    console.log(getApi);
     axios.get(getApi).then((response) => {
-      setProducts(response.data.results);
+      setProductsRelated(response.data.results);
+      console.log(response.data.results);
     });
   }, []);
+  console.log(product.category.id);
   return (
     <div className={styles}>
       <h2 className={styles.header}>Sản phẩm liên quan</h2>
       <div className={styles.grid__column10}>
         <div className={styles.home__product}>
           <div className={styles.grid__row}>
-            {products.map((item) => (
+            {productsRelated.map((item) => (
               <div key={item.id} className={styles.grid__column24}>
                 <Link
                   to={`/productDetail/${item.id}`}
