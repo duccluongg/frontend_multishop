@@ -3,7 +3,9 @@ import axios from 'axios';
 import styles from '../Order.module.css';
 import storageUser from '../../../constants/storageUser';
 import formatCash from '../../../constants/formatPrice';
+import { useHistory } from 'react-router';
 const ListOrder = () => {
+  const history = useHistory();
   const [order, setOrder] = useState([]);
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders?page=1&page_size=5`;
@@ -47,7 +49,14 @@ const ListOrder = () => {
                 <div className={styles.itemName}>{item.name}</div>
                 <div className={styles.phoneUser}>{item.phone_number}</div>
                 <div className={styles.payment}>{item.payment.name}</div>
-                <div className={styles.details}>Xem chi tiết đơn hàng</div>
+                <div
+                  className={styles.details}
+                  onClick={() => {
+                    history.push(`/detailOrder/${item.id}`);
+                  }}
+                >
+                  Xem chi tiết đơn hàng
+                </div>
               </div>
               <div className={styles.listImg}>
                 {item.items.map((items) => (

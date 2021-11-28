@@ -107,3 +107,11 @@
   justify-content: space-between;
   margin-top: 20px;
 }
+.shipping span {
+  font-weight: 600;
+  color: rgb(145, 104, 65);
+}
+.totalPrice span {
+  font-weight: 600;
+  color: rgb(145, 104, 65);
+}

@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from '../DetailsOrder.module.css';
 import storageUser from '../../../constants/storageUser';
 import axios from 'axios';
+import { useParams } from 'react-router';
+import formatCash from '../../..//constants/formatPrice.js';
 const InfoOrder = () => {
+  const { id } = useParams();
   const [detail, setDetail] = useState({});
+  const [item, setItem] = useState([]);
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders/5`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders/${id}`;
     axios
       .get(getApi, {
         headers: {
@@ -15,6 +19,19 @@ const InfoOrder = () => {
       .then((response) => {
         setDetail(response.data);
         console.log(response.data);
+      });
+  }, []);
+  useEffect(() => {
+    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders/${id}`;
+    axios
+      .get(getApi, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+        },
+      })
+      .then((response) => {
+        setItem(response.data.items);
+        console.log(response.data.items);
       });
   }, []);
   return (
@@ -32,9 +49,9 @@ const InfoOrder = () => {
         {/* <div className={styles.infoPayment}>{detail.payment.name}</div> */}
       </div>
       <div className={styles.listItem}>
-        <div className={styles.headerSub}>Đơn hàng</div>
+        <div className={styles.headerSub}>Đơn hàng số: {detail.id}</div>
         <div className={styles.listItems}>
-          {/* {detail.items.map((item) => (
+          {item.map((item) => (
             <div className={styles.item}>
               <div className={styles.itemInfo}>
                 <img src={item.product.thumbnail} alt="" />
@@ -45,16 +62,19 @@ const InfoOrder = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.itemPrice}> {item.order_price} đ</div>
+              <div className={styles.itemPrice}>
+                {' '}
+                {formatCash(`${item.order_price}`)} đ
+              </div>
             </div>
-          ))} */}
+          ))}
           <div className={styles.shipping}>
             <div>Phí ship</div>
-            <span>{detail.shipping_fee} đ</span>
+            <span>{formatCash(`${detail.shipping_fee}`)} đ</span>
           </div>
           <div className={styles.totalPrice}>
             <div>Tổng cộng</div>
-            <span> {detail.total_cost} đ</span>
+            <span> {formatCash(`${detail.total_cost}`)} đ</span>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ function App() {
         <Route path="/checkout" exact component={Checkout} />
         <Route path="/order" exact component={Order} />
         <Route exact path="/productDetail/:id" component={ProductDetail} />
-        <Route exact path="/detailOrder" component={DetailsOrder} />
+        <Route exact path="/detailOrder/:id" component={DetailsOrder} />
         <Route path="/cart" exact component={Cart} />
         <Route path="/productList/:id" component={Productlist} />
         <Route path="/" exact component={Main} />

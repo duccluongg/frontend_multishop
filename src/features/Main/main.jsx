@@ -20,7 +20,7 @@ const Main = () => {
           <ClipLoader loading={loading} size={50} />
         </div>
       ) : ( */}
-      <div>
+      <div className={styles.main}>
         <div className={styles.Header}>
           <Header />
         </div>

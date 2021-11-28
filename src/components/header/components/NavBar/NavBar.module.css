@@ -1,6 +1,6 @@
 .sideBar {
   display: flex;
-  width: 1200px;
+  min-width: 1200px;
   margin: 0px 90px 0px 90px;
   justify-content: space-between;
   font-family: 'Montserrat', sans-serif;
