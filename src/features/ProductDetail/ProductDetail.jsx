@@ -12,7 +12,7 @@ import storageUser from '../../constants/storageUser';
 import ProductImg from './components/ProductImg/ProductImg';
 function ProductDetail() {
   const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -42,9 +42,11 @@ function ProductDetail() {
   }, [id]);
 
   useEffect(() => {
-    return setTimeout(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
+    return () => clearTimeout(timer);
   }, []);
   return (
     <React.Fragment>

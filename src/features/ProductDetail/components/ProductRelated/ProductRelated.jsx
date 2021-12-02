@@ -13,7 +13,7 @@ function ProductRelated({ product }) {
       console.log(response.data.results);
     });
   }, []);
-  console.log(product.category.id);
+
   return (
     <div className={styles}>
       <h2 className={styles.header}>Sản phẩm liên quan</h2>

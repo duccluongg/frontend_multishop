@@ -26,12 +26,13 @@ const Cart = () => {
   const toCheckOut = () => {
     history.push('/checkout');
   };
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, []);
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/me`;
