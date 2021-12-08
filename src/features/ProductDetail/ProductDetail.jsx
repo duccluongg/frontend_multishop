@@ -102,8 +102,6 @@ function ProductDetail() {
         </React.Fragment>
       )}
     </React.Fragment>
-    // a cmt heest lai di roi goi cung dc
-    // em dat cai decription o dau
   );
 }
 

@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import formatCash from '../../../../constants/formatPrice';
 function ProductRelated({ product }) {
   const [productsRelated, setProductsRelated] = useState([]);
+
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=${product.category.id}`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/products?&category=${product.category?.id}`;
     console.log(getApi);
     axios.get(getApi).then((response) => {
       setProductsRelated(response.data.results);
-      console.log(response.data.results);
     });
   }, []);
 

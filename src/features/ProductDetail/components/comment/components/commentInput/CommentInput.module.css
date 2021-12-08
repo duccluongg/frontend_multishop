@@ -1,3 +1,41 @@
 .form {
-  width: 100%;
+  width: 96%;
+}
+.btn {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto Slab', serif;
+  margin: 12px 0;
+  /* border: 2px solid #ff7675; */
+  padding: 10px 50px;
+  text-transform: uppercase;
+  transition: 1s all ease;
+  background: none;
+  outline: none;
+  border: 1px solid #333;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+textarea {
+  margin: 10px 12px 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  background-color: #f7f7f7;
+  font-family: 'Poppins', sans-serif;
+}
+.textAreaStyle {
+  width: auto;
+  height: auto;
+  border-bottom: 1px solid rgb(118, 118, 118);
+  border-radius: 2px;
+  font-size: 16px;
+  background-color: #f7f7f7;
+  margin-bottom: 30px;
 }
