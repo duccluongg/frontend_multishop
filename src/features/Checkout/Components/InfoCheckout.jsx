@@ -24,15 +24,6 @@ const InfoCheckout = (props) => {
           <div className={styles.itemDetails2}>{userInfo.address}</div>
         </div>
       </div>
-      <div className={styles.methodToPay}>
-        <span>Phương thức thanh toán</span>
-        <div>
-          <input type="radio" />  <label>Momo</label>
-        </div>
-        <div>
-          <input type="radio" />  <label>Thanh toán sau khi nhận hàng</label>
-        </div>
-      </div>
     </div>
   );
 };

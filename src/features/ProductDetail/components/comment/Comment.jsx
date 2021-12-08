@@ -39,7 +39,7 @@ const Comment = ({ currentUserId, user }) => {
   };
   return (
     <div className={styles.comment}>
-      <h3 className={styles.commentTitle}>Đánh giá sản phảm</h3>
+      <h3 className={styles.commentTitle}>Đánh giá sản phẩm</h3>
       <div className={styles.commentFormTitle}>Nhận xét của bạn</div>
       {user?.id ? (
         <CommentInput handleSubmit={addComment} />

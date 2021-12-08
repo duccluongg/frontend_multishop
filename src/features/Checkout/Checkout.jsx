@@ -8,6 +8,7 @@ import Footer from '../../components/Footer/Footer';
 import storageUser from '../../constants/storageUser';
 const Checkout = () => {
   const [user, setUser] = useState({});
+
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/user/me`;
     axios
@@ -20,12 +21,42 @@ const Checkout = () => {
         setUser(response.data);
       });
   }, []);
+  console.log(user);
+
+  const checkOut = (value, cart) => {
+    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders`;
+    axios
+      .post(
+        getApi,
+        {
+          name: user.name,
+          address: user.address,
+          phone_number: user.phone_number,
+          payment: value,
+          items: cart?.cartItems?.map((item) => {
+            return { product: item?.id, count: item?.cartQuantity };
+          }),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem(
+              storageUser.TOKEN
+            )}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      });
+    console.log(cart);
+  };
+
   return (
     <React.Fragment>
       <Header />
       <div className={styles.container}>
         <InfoCheckout userInfo={user} />
-        <SlideCheckOut userInfo={user} />
+        <SlideCheckOut handleSubmit={checkOut} />
       </div>
       <Footer />
     </React.Fragment>
