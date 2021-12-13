@@ -19,10 +19,11 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import { useHistory } from 'react-router';
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  console.log(cart);
   const history = useHistory();
-  console.log(history);
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
+  const [idCart, setIdCart] = useState('');
   const toCheckOut = () => {
     history.push('/checkout');
   };
@@ -62,12 +63,13 @@ const Cart = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        setIdCart(response.data.id);
         if (response.data) {
           dispatch(initialCart(response.data));
         }
       });
   }, [dispatch]);
+  console.log(idCart);
 
   const handleAddToCart = (product) => {
     const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/add`;

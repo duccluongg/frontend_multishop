@@ -1,6 +1,7 @@
 import React from 'react';
+import Response from '../response/Response';
 import styles from './CommentForm.module.css';
-const CommentForm = ({ comment }) => {
+const CommentForm = ({ comment, user }) => {
   return (
     <div className={styles.comment}>
       <div className={styles.img}>
@@ -22,6 +23,15 @@ const CommentForm = ({ comment }) => {
           </div>
         </div>
         <div className={styles.commentText}>{comment.comment}</div>
+        {user?.id ? (
+          <Response comment={comment} />
+        ) : (
+          <div className={styles.needToLogin}>
+            {' '}
+            Bạn cần phải đăng nhập để nhận xét
+          </div>
+        )}
+
         <div className={styles.replies}>
           {comment.responses.map((item1) => (
             <div key={item1.id} className={styles.contain}>

@@ -51,7 +51,6 @@ const LoginForm = () => {
   const { isSuccess, isError, errorMessage } = useSelector(registerSelector);
   const onSubmit = () => {
     dispatch(registerUser({ userName, passWord, email, address, name, phone }));
-    console.log({ userName, passWord, email, address, name, phone });
   };
   useEffect(() => {
     return () => {

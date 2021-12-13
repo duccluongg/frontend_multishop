@@ -12,7 +12,6 @@ const Comment = ({ currentUserId, user }) => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
     axios.get(getApi).then((response) => {
       setBackendComments(response.data.ratings);
-      console.log(response.data);
     });
   }, []);
   const addComment = (text, star) => {
@@ -51,7 +50,7 @@ const Comment = ({ currentUserId, user }) => {
       )}
 
       {backendComments.map((item) => (
-        <CommentForm key={item.id} comment={item} />
+        <CommentForm key={item.id} user={user} comment={item} />
       ))}
     </div>
   );
