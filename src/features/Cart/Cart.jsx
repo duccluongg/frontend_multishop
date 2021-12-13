@@ -19,7 +19,6 @@ import PulseLoader from 'react-spinners/PulseLoader';
 import { useHistory } from 'react-router';
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
   const history = useHistory();
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
@@ -63,14 +62,16 @@ const Cart = () => {
         },
       })
       .then((response) => {
-        setIdCart(response.data.id);
+        setIdCart(
+          response.data.map((item) => {
+            return String(item?.id);
+          })
+        );
         if (response.data) {
           dispatch(initialCart(response.data));
         }
       });
   }, [dispatch]);
-  console.log(idCart);
-
   const handleAddToCart = (product) => {
     const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts/add`;
     axios
@@ -118,29 +119,40 @@ const Cart = () => {
       });
   };
   const handleRemoveFromCart = (product) => {
-    const removeCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
-    axios
-      .delete(
-        removeCart,
-        {
-          cart_id: cart.id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem(
-              storageUser.TOKEN
-            )}`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-        if (response.data) {
-          dispatch(removeFromCart(product));
-        }
-      });
+    // const removeCart = `https://yshuynh.pythonanywhere.com/api/user/carts/remove`;
+    // axios
+    //   .delete(
+    //     removeCart,
+    //     {
+    //       cart_id: cart.id,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${sessionStorage.getItem(
+    //           storageUser.TOKEN
+    //         )}`,
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     if (response.data) {
+    //       dispatch(removeFromCart(product));
+    //     }
+    //   });
   };
   const handleClearCart = () => {
+    const getCart = `https://yshuynh.pythonanywhere.com/api/user/carts`;
+    axios
+      .delete(getCart, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem(storageUser.TOKEN)}`,
+        },
+        data: idCart,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
     dispatch(clearCart());
   };
   return (
@@ -197,7 +209,6 @@ const Cart = () => {
                         cart.cartItems.map((cartItem) => (
                           <div className="cart-item" key={cartItem.id}>
                             <div className="cart-product">
-                              {console.log(cartItem)}
                               <img
                                 src={cartItem.thumbnail}
                                 alt={cartItem.name}
