@@ -17,7 +17,7 @@ export const registerUser = createAsyncThunk(
             email,
             name,
             address,
-            phone,
+            phone_number: phone,
           }),
         }
       );

@@ -8,12 +8,11 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import Modal from './modal';
+
 const SlideCheckOut = ({ handleSubmit }) => {
   const [value, setValue] = React.useState(1);
   const [modal, setModal] = useState(false);
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
-
   const [payment, setPayment] = useState([]);
   useEffect(() => {
     const getApi = 'https://yshuynh.pythonanywhere.com/api/payments';
@@ -24,6 +23,7 @@ const SlideCheckOut = ({ handleSubmit }) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
   const checkoutOrder = () => {};
   const onSubmit = (event) => {
     event.preventDefault();

@@ -8,7 +8,7 @@ const ListOrder = () => {
   const history = useHistory();
   const [order, setOrder] = useState([]);
   useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders?page=1&page_size=5`;
+    const getApi = `https://yshuynh.pythonanywhere.com/api/user/orders`;
     axios
       .get(getApi, {
         headers: {
