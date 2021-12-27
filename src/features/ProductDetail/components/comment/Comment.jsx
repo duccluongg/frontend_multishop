@@ -7,6 +7,7 @@ import CommentInput from './components/commentInput/CommentInput';
 import storageUser from '../../../../constants/storageUser';
 const Comment = ({ currentUserId, user }) => {
   const [backendComments, setBackendComments] = useState([]);
+  const [reponse, setReponse] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
@@ -33,7 +34,10 @@ const Comment = ({ currentUserId, user }) => {
         }
       )
       .then((response) => {
-        console.log(response.data);
+        const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
+        axios.get(getApi).then((response) => {
+          setBackendComments(response.data.ratings);
+        });
       });
   };
   return (

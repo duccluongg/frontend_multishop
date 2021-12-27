@@ -27,9 +27,5 @@
   font-size: 16px;
   transition: 0.4s;
   line-height: 30px;
-  width: 0px;
-}
-.searchBox:hover > .searchTxt {
-  width: 240px;
-  padding: 0 6px;
+  width: 550px;
 }
