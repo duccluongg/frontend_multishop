@@ -5,9 +5,8 @@ import styles from './Comment.module.css';
 import CommentForm from './components/form/CommentForm';
 import CommentInput from './components/commentInput/CommentInput';
 import storageUser from '../../../../constants/storageUser';
-const Comment = ({ currentUserId, user }) => {
+const Comment = ({ user }) => {
   const [backendComments, setBackendComments] = useState([]);
-  const [reponse, setReponse] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;

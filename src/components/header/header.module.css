@@ -25,6 +25,7 @@
 }
 .acc {
   cursor: pointer;
+  margin-left: 20px;
 }
 .cart {
   margin-right: 30px;
@@ -69,41 +70,7 @@
   border-bottom-color: #ededed;
   border-bottom-style: solid;
 }
-.searchBox {
-  background-color: #2f3640;
-  background: #2f3640;
-  height: 50px;
-  border-radius: 40px;
-  padding: 10px;
-  cursor: pointer;
-}
-.searchBtn {
-  color: #fff;
-  float: right;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #2f3640;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.searchTxt {
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: white;
-  font-size: 16px;
-  transition: 0.4s;
-  line-height: 30px;
-  width: 0px;
-}
-.searchBox:hover > .searchTxt {
-  width: 240px;
-  padding: 0 6px;
-}
+
 .notifyList {
   position: absolute;
   width: 200px;
@@ -138,4 +105,95 @@
   position: absolute;
   right: 30px;
   top: -20px;
+}
+.modal,
+.overLay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 111;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  animation: Fadein linear 0.1s;
+}
+
+.overLay {
+  background: rgba(49, 49, 49, 0.8);
+}
+.searchBox {
+  background-color: #fff;
+  color: #333;
+  height: 50px;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 30px;
+  --Growth-from: 0.7;
+  --Growth-to: 1;
+  z-index: 1;
+  animation: Growth linear 0.1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.searchBox i {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+.searchBtn {
+  color: #fff;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchTxt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #333;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 30px;
+  width: 500px;
+  margin-left: 10px;
+  position: relative;
+  z-index: 111111111;
+}
+.listSearch {
+  margin-top: 6px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  max-height: 313px;
+  width: 100%;
+  overflow: hidden;
+}
+.itemSearch {
+  padding: 6px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.itemSearch img {
+  width: 50px;
+  height: 50px;
+}
+.itemSearch:hover {
+  background-color: #fafafa;
+}
+.nameItem {
+  width: 500px;
+  overflow-x: hidden;
 }

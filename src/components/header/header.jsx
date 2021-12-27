@@ -5,8 +5,30 @@ import NavBar from './components/NavBar/NavBar';
 import storageUser from '../../constants/storageUser';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 const Header = () => {
+  const history = useHistory();
   const [user, setUser] = useState({});
+  const [modal, setModal] = useState(false);
+  const [searchList, setSearchList] = useState([]);
+  console.log(searchList);
+  const handleSearch = (e) => {
+    const temp = e.target.value;
+    if (temp == '') {
+      setSearchList([]);
+    } else {
+      const getApi = `https://yshuynh.pythonanywhere.com/api/products/lite?page_size=10&search_name=${temp}`;
+      axios.get(getApi).then((response) => {
+        setSearchList(response.data.results);
+      });
+    }
+  };
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  const showModal = () => {
+    setModal(!modal);
+  };
   const logout = () => {
     sessionStorage.removeItem(storageUser.TOKEN);
   };
@@ -33,6 +55,9 @@ const Header = () => {
       <div className={styles.container}>
         <div>Multishop</div>
         <div className={styles.info}>
+          <div onClick={showModal} className={styles.search}>
+            <i className="fas fa-search"></i>
+          </div>
           {user?.id ? (
             <div className={styles.acc}>
               {user.name}
@@ -75,6 +100,39 @@ const Header = () => {
       </div>
       <div className={styles.border}></div>
       <NavBar />
+      {modal && (
+        <div className={styles.modal}>
+          <div className={styles.overLay}>
+            <div>
+              <div className={styles.searchBox}>
+                <i className="fas fa-search"></i>
+                <input
+                  className={styles.searchTxt}
+                  type="text"
+                  name="productName_contains"
+                  placeholder="Type to search"
+                  onKeyUp={handleSearch}
+                  autoComplete="off"
+                />
+
+                <i onClick={toggleModal} className="fas fa-times"></i>
+              </div>
+              <div className={styles.listSearch}>
+                {searchList.map((item) => (
+                  <div
+                    onClick={() => history.push(`/productDetail/${item.id}`)}
+                    key={item.id}
+                    className={styles.itemSearch}
+                  >
+                    <img src={item.thumbnail} alt="thumbnail" />
+                    <div className={styles.nameItem}>{item.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };

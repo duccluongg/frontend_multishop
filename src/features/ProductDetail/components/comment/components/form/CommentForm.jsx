@@ -1,17 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router';
+import React from 'react';
 import Response from '../response/Response';
 import styles from './CommentForm.module.css';
 const CommentForm = ({ comment, user }) => {
-  const { id } = useParams();
-  const [backendComments, setBackendComments] = useState([]);
-  useEffect(() => {
-    const getApi = `https://yshuynh.pythonanywhere.com/api/products/${id}`;
-    axios.get(getApi).then((response) => {
-      setBackendComments(response.data.ratings);
-    });
-  }, []);
   return (
     <div className={styles.comment}>
       <div className={styles.img}>
@@ -33,14 +23,14 @@ const CommentForm = ({ comment, user }) => {
           </div>
         </div>
         <div className={styles.commentText}>{comment.comment}</div>
-        {/* {user?.id ? (
+        {user?.id ? (
           <Response comment={comment} />
         ) : (
           <div className={styles.needToLogin}>
             {' '}
             Bạn cần phải đăng nhập để nhận xét
           </div>
-        )} */}
+        )}
 
         <div className={styles.replies}>
           {comment.responses.map((item1) => (
