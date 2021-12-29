@@ -58,8 +58,7 @@ const LoginForm = () => {
     }
     if (isSuccess) {
       dispatch(clearState());
-      // history.push('/');
-      history.goBack();
+      history.push('/');
     }
   }, [isError, isSuccess]);
   const handleCheckBoxChange = () => {
