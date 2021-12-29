@@ -104,7 +104,7 @@ const Productlist = () => {
                   <SlideBar category={category} />
                 </div>
                 <div className={styles.grid__column10}>
-                  <ProductFilter onChange={handleFiltersChange} />
+                  {/* <ProductFilter onChange={handleFiltersChange} /> */}
                   <EachProduct product={product} />
                 </div>
               </div>
